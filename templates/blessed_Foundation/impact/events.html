@@ -1,0 +1,43 @@
+{% extends "Base.html" %}
+
+{% block content %}
+
+<!-- Header Start -->
+<div class="container-fluid" style="background-image: url(../static/img/event.jpg); background-size: cover; padding: 100px 0 0 0;">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h3 class="text-white display-3 mb-4">Events</h3>
+        <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}">Home</a></li>
+            <li class="breadcrumb-item active text-white">Events</li>
+        </ol>
+    </div>
+</div>
+<!-- Header End -->
+
+<!-- Events Start -->
+<div class="container-fluid event py-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+            <h5 class="text-uppercase" style="color: rgba(37, 67, 54, 1);">Upcoming Events</h5>
+        </div>
+        <div class="event-carousel">
+            {% for event in events %}
+            <div class="event-item">
+                <img data-src="{{ event.image.url }}" id="eventss" class="img-fluid w-100 lazyload" alt="Event Image">
+                <div class="event-content p-4">
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="text-white"><i class="fas fa-map-marker-alt me-2"></i>{{ event.lieu }}</span>
+                        <span class="text-white"><i class="fas fa-calendar-alt me-2"></i>{{ event.date_de_debut }}</span>
+                    </div>
+                    <h4 class="mb-4 text-white">{{ event.nom }}</h4>
+                    <p class="mb-4 text-white">{{ event.description }}</p>
+                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Events End -->
+
+{% endblock content %}

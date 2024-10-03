@@ -1,0 +1,33 @@
+{% extends "Base.html" %}
+
+{% block content %}  
+<style>
+    .donate-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        margin : 20px;
+        color: white;
+    }
+    .donate-button {
+        width: 550px;
+        padding : 20px;
+        color: white;
+    }
+    
+</style>
+<div class="container-fluid" style="background-image:url(../../static/img/donation.jpg);background-size:cover;padding: 100px 0 0 0;" >
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h3 class="text-white display-3 mb-4">Donation</h1>
+        <p class="fs-5 text-white mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
+        <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a></li>
+            <li class="breadcrumb-item active text-white">Donation</li>
+        </ol>    
+    </div>
+</div> 
+
+<div class="donate-container">
+    {{ paypal.render }}
+</div>
+{% endblock content %}

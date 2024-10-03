@@ -1,0 +1,205 @@
+{% extends "Base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid" style="background-image:url(../../static/img/donation.jpg);background-size:cover;padding: 100px 0 0 0;" >
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h3 class="text-white display-3 mb-4">Donation</h1>
+        <p class="fs-5 text-white mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
+        <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a></li>
+            <li class="breadcrumb-item active text-white">Donation</li>
+        </ol>    
+    </div>
+</div>
+<!-- Header End -->
+
+    
+{% if messages %}
+<div class="modal fade show" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Ambassador</h5>
+                <a  class=" btn close" href="{% url 'Foundation:index' %}"  data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+            <div class="modal-body">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'Foundation:index' %}" class="btn btn-secondary" data-dismiss="modal">Fermer</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<div class="m-5"></div>
+{% if mode.type_paiement == 'ORANGE_MONEY' or mode.type_paiement == 'M_PESA'  %}
+<div class="d-flex justify-content-center align-items-center vh-50 ">
+    <div class="card p-5" style="background: rgba(37, 67, 54, 1);">
+       
+            <svg class="bd-placeholder-img card-img" width="5%" height="0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Card image" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <a href="#"><img src="{{ mode.image.url }}" class="card-img-top img-fluid w-50 " alt=""></a>
+            </svg>
+       
+        <div class="card-body text-white">
+            Numero d'envoie : {{ mode.details.telephone }} <br>
+            destinataire : {{ mode.destinataire }}
+        </div>
+     
+    </div>
+</div>{% endif %}
+
+<div class="container">
+    <h3 class="text-center p-5 m-3">Your Information</h3>
+
+<form class="row g-3" action="" method="post">
+        {% csrf_token %}
+        
+        <div class="col-12">
+            <label for="montant" class="form-label">Montant<span class="required">*</span></label>
+            <input type="text" class="form-control" id="montant" Name="montant" required>
+        </div>
+        <input type="text" class="form-control" id="type" Name="types" value="{{mode.type_paiement}}" style="display:none;">
+        
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="anomy" id="anomy">
+                <label class="form-check-label" for="anomy">Faire un don anonyme</label>
+            </div>
+        
+            <div class="col-md-6">
+                <label for="transfert" class="form-label">Entrer le code de transfert<span class="required">*</span></label>
+                <input type="text" class="form-control" id="transfert" name="transfert" required>
+            </div>
+            <div class="col-md-6">
+                <label for="destinataire" class="form-label">Entrer le nom du destinataire<span class="required">*</span></label>
+                <input type="text" class="form-control" id="destinataire" name="destinataire" required>
+            </div>
+        
+            <div id="anomous">
+                <div class="col-12">
+                    <label for="nom" class="form-label">Name <span class="required">*</span></label>
+                    <input type="text" class="form-control" id="nom" name="nom">
+                </div>
+                <div class="col-12">
+                    <label for="prenom" class="form-label">Surname<span class="required">*</span></label>
+                    <input type="text" class="form-control" id="prenom" name="prenom">
+                </div>
+                <div class="col-12">
+                    <label for="inputPhoneNumber" class="form-label">Phone Number <span class="required">*</span></label>
+                    <input type="tel" class="form-control" id="inputPhoneNumber" placeholder="Enter your phone number" name="phone">
+                </div>
+                <div class="col-12">
+                    <label for="inputCountry" class="form-label">Country <span class="required">*</span></label>
+                    <select id="inputCountry" class="form-select" name="pays" required>
+                        <option selected>Choose...</option>
+                        <!-- Country options will be dynamically added -->
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="inputEmail4" class="form-label">Email <span class="required">*</span></label>
+                    <input type="email" class="form-control" id="inputEmail4" name="email" required>
+                </div>
+                <div class="col-12">
+                    <label for="raison" class="form-label">Message<span class="required">*</span></label>
+                    <textarea class="form-control" id="raison" rows="3" name="raison" required></textarea>
+                </div>
+                <div class="col-12">
+                    <label for="Connaissance" class="form-label">Comment nous avez vous connu <span class="required">*</span></label>
+                    <select id="Connaissance" class="form-select" name="Connaissance" required>
+                        <option selected>Choose...</option>
+                        <option value="Evenement">Event</option>
+                        <option value="Presse">Press</option>
+                        <option value="Reseau Sociaux">Social Media</option>
+                        <option value="Autre">other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-arrow-right-circle-fill"></i>
+                    {% if mode.type_paiement == 'PAYPAL' or mode.type_paiement == 'CARTE'  %}
+                    next
+                    {% else %}
+                    submit
+                    {% endif %}
+                    
+                </button>
+            </div>
+        </form>
+        
+
+
+
+{% block scripts %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const anonyme = document.getElementById("anomy");
+        const masque = document.getElementById("anomous");
+        const inputs = masque.querySelectorAll('input, select, textarea');
+    
+        anonyme.addEventListener('change', function() {
+            if (anonyme.checked) {
+                masque.style.display = 'none';
+                inputs.forEach(function(input) {
+                    input.disabled = true;
+                });
+            } else {
+                masque.style.display = 'block';
+                inputs.forEach(function(input) {
+                    input.disabled = false;
+                });
+            }
+        });
+    });
+    
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+const selectCountry = document.getElementById('inputCountry');
+const selectPhonePrefix = document.getElementById('phonePrefix');
+
+// Chargement des pays depuis l'API Restcountries
+fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data => {
+        // Tri des pays par nom commun
+        data.sort((a, b) => {
+            if (a.name.common < b.name.common) return -1;
+            if (a.name.common > b.name.common) return 1;
+            return 0;
+        });
+
+        // Ajout des options pour les pays dans le select #inputCountry
+        data.forEach(country => {
+            const option = document.createElement('option');
+            option.textContent = country.name.common;
+            selectCountry.appendChild(option);
+        });
+
+       
+    })
+    .catch(error => {
+        console.error('Error fetching countries:', error);
+    });
+});
+</script>
+
+<script>
+$(document).ready(function () {
+$('#successModal').modal('show');
+
+
+});
+</script>
+{% endblock %}
+</div>
+
+
+{% endblock content %}

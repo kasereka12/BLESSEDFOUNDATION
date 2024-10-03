@@ -1,0 +1,9 @@
+{% extends "Base.html" %}
+
+{% block content %}
+{% for message in messages %}
+<div class="alert alert-success">
+  {{ message }}
+</div>
+{% endfor %}
+{% endblock %}

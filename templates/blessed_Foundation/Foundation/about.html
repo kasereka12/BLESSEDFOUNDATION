@@ -1,0 +1,99 @@
+{% extends "Base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Header Start -->
+<div class="container-fluid" style="background-image: url('{% static 'img/about.jpg' %}'); background-size: cover; padding: 100px 0 0 0;">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h1 class="text-white display-3 mb-4">About Us</h1>
+        <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}">Home</a></li>
+            <li class="breadcrumb-item active text-white">About Us</li>
+        </ol>
+    </div>
+</div>
+<!-- Header End -->
+
+<!-- About Start -->
+<div class="container-fluid about py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-xl-5">
+                <div class="h-100">
+                    <img data-src="{% static 'img/blessed.jpg' %}" class="img-fluid w-100 h-100 lazyload" alt="Image">
+                </div>
+            </div>
+
+            <div class="col-xl-7">
+                <div class="tab-class p-4">
+                    <ul class="nav d-flex mb-2 p-3" style="background: rgba(37, 67, 54, 0.5);">
+                        <li class="nav-item mb-3">
+                            <a class="d-flex py-2 text-center bg-white active" data-bs-toggle="pill" href="#tab-1">
+                                <span class="text-dark" style="width: 150px;">Genese</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mb-3">
+                            <a class="d-flex py-2 mx-3 text-center bg-white" data-bs-toggle="pill" href="#tab-2">
+                                <span class="text-dark" style="width: 150px;">Mission</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                            <div class="row">
+                                <div class="col-md-6 themed-grid-col">
+                                    <p class="fs-5">
+                                        According to <span style="color: red;">Benite Mukombo</span> based on his own tragic experience, he grew up in Lubumbashi, a small town in Africa, where he lived in a modest house with his parents and three siblings. They often lacked basic necessities and sometimes went to bed hungry due to financial struggles.
+                                    </p>
+                                    <p class="fs-5">
+                                        At the tender age of 9, his parents sent him and his siblings to sell vegetables they grew in their garden on the roadside to earn money for food, unable to afford new clothes like other children.
+                                    </p>
+                                </div>
+                                <div class="col-md-6 themed-grid-col">
+                                    <p class="fs-5">
+                                        Recalling those challenging times, Benite mentioned how witnessing his parents' hardships and the fear it caused left him feeling hopeless from a young age. While other children played and enjoyed their childhood, they were occupied with helping their parents survive.
+                                    </p>
+                                    <p class="fs-5 mb-4">
+                                        Reflecting on his past, Benite empathized with the difficulty parents face when they cannot provide for their children, describing it as potentially traumatic.
+                                    </p>
+                                </div>
+                                <div class="col-md-6 themed-grid-col">
+                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> help families struck by poverty and who have lost all hope.</p>
+                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> to assist underprivileged children, single mothers, and anyone who has lost all hope due to the challenges of daily life</p>
+                                </div>
+                                <div class="col-md-6 themed-grid-col">
+                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> facilitate access to local support programs to aid those in need</p>
+                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> help you find the light again.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane fade show p-0">
+                            <div class="row">
+                                <div class="col-md-6 themed-grid-col">
+                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Reintegration of orphans and underprivileged children.</p>
+                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> To give hope (smile) to abandoned women who single-handedly assume parental responsibilities worldwide, especially in the DRC, through guidance and integration into various professional and life domains</p>
+                                </div>
+                                <div class="col-md-6 themed-grid-col">
+                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Encourage creativity and social reintegration to establish greater equality of opportunities by offering all young people a wealth of experiences, assets, and relationships to pursue through all means and notably</p>
+                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Establishment of orphanages and centers for mixed children and youth.</p>
+                                </div>
+                                <div class="col-md-6 themed-grid-col">
+                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Encourage creativity and social reintegration to establish greater equality of opportunities by offering all young people a wealth of experiences, assets, and relationships to pursue through all means and notably</p>
+                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Establishment of orphanages and centers for mixed children and youth.</p>
+                                </div>
+                                <div class="col-md-6 themed-grid-col">
+                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Promote and encourage young girls through education, awareness, and professionalism for a complete success in life.</p>
+                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Creation of schools and training centers for education and guidance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+{% endblock content %}

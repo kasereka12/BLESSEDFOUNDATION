@@ -1,0 +1,90 @@
+{% extends "Base.html" %}
+
+{% block content %}
+
+
+<!-- Header Start -->
+<div class="container-fluid" style="background-image:url(../static/img/stories.jpg);background-size:cover;padding: 100px 0 0 0;">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h3 class="text-white display-3 mb-4">Tell Your Story</h3>
+        <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a></li>
+            <li class="breadcrumb-item active text-white">Your Stories</li>
+        </ol>    
+    </div>
+</div>
+<!-- Header End -->
+{% if messages %}
+<div class="modal fade show" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">histoire</h5>
+                <a  class=" btn close" href="{% url 'Foundation:index' %}"  data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+            <div class="modal-body">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'Foundation:index' %}" class="btn btn-secondary" data-dismiss="modal">Fermer</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<div class="p-5" style="font-size:20px;">
+    <p>
+        Support the cause by sharing your experience. We will publish it on our website and social media to raise awareness about the challenges of single-parent education and also to promote your business if you have one. If you wish to make an anonymous testimony, click the button below.
+    </p>
+
+</div>
+<div class="container">
+  
+
+    <form class="row g-3" id="myForm" method="post">
+        {% csrf_token %}
+        <div class="col-md-6">
+            <label for="nom" class="form-label">Name <span class="required">*</span></label>
+            <input type="text" class="form-control" id="nom" Name="nom" required>
+        </div>
+        <div class="col-md-6">
+            <label for="prenom" class="form-label">First Name <span class="required">*</span></label>
+            <input type="text" class="form-control" id="prenom" Name="prenom" required>
+        </div>
+        <div class="col-md-6">
+            <label for="tel" class="form-label">Phone <span class="required">*</span></label>
+            <input type="tel" class="form-control" id="tel" Name="telephone" required>
+        </div>
+        <div class="col-md-6">
+            <label for="mail" class="form-label">Email <span class="required">*</span></label>
+            <input type="email" class="form-control" id="mail" Name="mail" required>
+        </div>
+        <div class="col-12">
+            <label for="raison" class="form-label">Your Story <small>(you will remain anonymous)</small> <span class="required">*</span></label>
+            <textarea class="form-control" id="raison" rows="5" Name="histoire" required></textarea>
+        </div>
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-arrow-right-circle-fill"></i> Send
+            </button>
+        </div>
+    </form>
+</div>
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#successModal').modal('show');
+
+        
+    });
+</script>
+{% endblock %}
+      
+
+{% endblock content %}

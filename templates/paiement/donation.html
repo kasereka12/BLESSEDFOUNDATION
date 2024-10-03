@@ -1,0 +1,74 @@
+{% extends "Base.html" %}
+
+{% block content %}
+    <!-- Header Start -->
+    <div class="container-fluid" style="background-image:url(../../static/img/donation.jpg);background-size:cover;padding: 100px 0 0 0;" >
+        <div class="container text-center py-5" style="max-width: 900px;">
+            <h3 class="text-white display-3 mb-4">Donation</h1>
+            <p class="fs-5 text-white mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a></li>
+                <li class="breadcrumb-item active text-white">Donation</li>
+            </ol>    
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <div class="container">
+        <p class="p-3 justify-content-between">
+            Your support can improve the employability and quality of life for mothers, their children's education, and advocacy for their rights. It will enable us to conduct more training, mentoring, support, and awareness activities for these mothers, children, as well as the general public and authorities, to reduce the risks of single-parent education failure and its social impact.
+        </p>
+
+        <h4>DONATING IN KIND</h4>
+        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Computer and audio-visual equipment.</p>
+        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Office furniture.</p>
+        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Medical equipment.</p>
+        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Agricultural equipment.</p>
+        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Real estate (house, land).</p>
+        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Medications.</p>
+        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Clothing.</p>
+        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> A vehicle.</p>
+        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> A plot of land.</p>
+        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Life insurance.</p>
+        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> School supplies.</p>
+      </div>             
+        <div class="text-center text-white m-3 p-5" style="background: rgba(37, 67, 54, 1);">
+            Contact us: +237 6 75 05 02 98 / 6 91 59 97 63 <br>
+            donner@fondationcoeurdemere.org 
+        </div>
+        <div class="container">
+          <h4>DONATING ONLINE</h4>
+          <div class="container">
+              <div class="row">
+                  {% for mode in modes %}
+                  <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card">
+                        <svg class="bd-placeholder-img card-img" width="100%" height="0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Card image" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <a href="#"><img src="{{mode.image.url}}" class="card-img-top img-fluid" alt=""></a>
+                        </svg>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ mode.nom }}</h5>
+                            {% if mode.type_paiement == 'PAYPAL'  %}
+                            <p class="card-text">You can donate using PayPal by clicking the button below:</p>
+                            <a href="{% url 'Paiement:paiement_home' %}?mode={{ mode.id }}" class="btn btn-primary text-white">Donate via  {{ mode.nom }}</a>
+                            
+                            {% elif mode.type_paiement == 'CARTE'  %}
+                            <p class="card-text">You can donate using Credit card by clicking the button below:</p>
+                            <a href="#" class="btn btn-primary text-white disabled">Donate via  {{ mode.nom }}</a> <small class="text-alert text-uppercase">comming soon</small>
+                            
+                            {% else %}
+                            <a href="{% url 'Paiement:paiement_home' %}?mode={{ mode.id }}" class="btn btn-primary text-white">Donate </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                  
+                  {% endfor %}
+                  
+              
+              </div>
+          </div>
+      </div>
+      
+    </div>
+{% endblock content %}

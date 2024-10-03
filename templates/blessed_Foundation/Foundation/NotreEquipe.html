@@ -1,0 +1,41 @@
+{% extends "Base.html" %}
+
+{% block content %}
+
+
+        <!-- Header Start -->
+        <div class="container-fluid" style="background-image:url(../static/img/team.jpg);background-size:cover;padding: 100px 0 0 0;">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-3 mb-4">our team</h1>
+               <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a>
+                    </li>
+                    <li class="breadcrumb-item active text-white">our team</li>
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+<!-- Services Start -->
+<div class="container-fluid service py-5 bg-light">
+    <div class="container py-5">
+      
+        <div class="row g-4">
+         {% for equipe in equipes  %}
+         <div class="col-md-6 col-lg-6 col-xl-3">
+            <div class="service-item">
+                <img data-src="{{equipe.profil.url}}" class="img-fluid w-100 lazyload" alt="Image">
+               
+            </div>
+            <p class="my-4">
+               <strong class="text-center">{{equipe.nom}}</strong><br>
+               <span class="text-center">{{equipe.poste}}</span>
+            </p>
+        </div>
+        
+         {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Services End -->
+
+{% endblock content %}

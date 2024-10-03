@@ -1,0 +1,163 @@
+{% extends "Base.html" %}
+
+{% block content %}
+
+        <!-- Header Start -->
+        <div class="container-fluid" style="background-image:url(../static/img/blessed.jpg);background-size:cover;padding: 100px 0 0 0;" >
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-3 mb-4">Ambassador</h1>
+               <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a></li>
+                  
+                    <li class="breadcrumb-item active text-white">Ambassador</li>
+                </ol>    
+            </div>
+        </div>
+   
+        <!-- Header End -->
+
+        
+        {% if messages %}
+        <div class="modal fade show" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="successModalLabel">Ambassador</h5>
+                        <a  class=" btn close" href="{% url 'Foundation:index' %}"  data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{% url 'Foundation:index' %}" class="btn btn-secondary" data-dismiss="modal">Fermer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+        <div class="container">
+            <p class="p-5" style="font-size:20px;">Whether you're an artist, politician, entrepreneur, web influencer, or any other influential person, you have the opportunity to support this transformative cause by allowing the use of your image for awareness or fundraising.
+                 We can even create posts for you if desired. You can also participate in our events or get more involved in seeking sponsors.
+            </p>
+            <h4 class="p-3 text-center">Ambassador Information</h4>
+            <form class="row g-3" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-md-6">
+                    <label for="nom" class="form-label">Name <span class="required">*</span></label>
+                    <input type="text" class="form-control" id="nom" Name="nom" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="prenom" class="form-label">Surname<span class="required">*</span></label>
+                    <input type="text" class="form-control" id="prenom" Name="prenom" required>
+                </div>
+                <div class="col-12">
+                    <label for="inputPhoneNumber" class="form-label">Phone Number <span class="required">*</span></label>
+                    <input type="tel" class="form-control" id="inputPhoneNumber" placeholder="Enter your phone number" Name="phone" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCountry" class="form-label">Country <span class="required">*</span></label>
+                    <select id="inputCountry" class="form-select" Name="pays" required>
+                        <option selected>Choose...</option>
+                        <!-- Country options will be dynamically added -->
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputstate" class="form-label">State <span class="required">*</span></label>
+                    <input type="text" class="form-control" id="inputstate" Name="ville" required>
+                </div>
+                <div class="col-12">
+                    <label for="profession" class="form-label">Profession <span class="required">*</span></label>
+                    <input type="text" class="form-control" id="profession" Name="profession" required>
+                </div>
+                <div class="col-12">
+                    <label for="inputEmail4" class="form-label">Email <span class="required">*</span></label>
+                    <input type="email" class="form-control" id="inputEmail4" Name="email" required>
+                </div>
+                <div class="col-12">
+                    <label for="raison" class="form-label">Why are you engaging? <span class="required">*</span></label>
+                    <textarea class="form-control" id="raison" rows="5" Name="raison" required></textarea>
+                </div>
+                <div class="col-12">
+                    <label for="fileInput" class="form-label">Upload Your Portrait</label>
+                    <input type="file" class="form-control" id="fileInput" aria-label="file example" accept="image/*" Name="profil" required>
+                    <div class="invalid-feedback">Please select a file.</div>
+                </div>
+            
+                <h5>Links to Your Pages</h5>
+                <div class="col-md-6">
+                    <label for="instagram" class="form-label">Instagram</label>
+                    <input type="text" class="form-control" id="instagram" Name="instagram">
+                </div>
+                <div class="col-md-6">
+                    <label for="Facebook" class="form-label">Facebook</label>
+                    <input type="text" class="form-control" id="Facebook" Name="Facebook">
+                </div>
+                <div class="col-md-6">
+                    <label for="linkedin" class="form-label">LinkedIn</label>
+                    <input type="text" class="form-control" id="linkedin" Name="linkedin">
+                </div>
+                <div class="col-md-6">
+                    <label for="Youtube" class="form-label">Youtube</label>
+                    <input type="text" class="form-control" id="Youtube" Name="Youtube">
+                </div>
+            
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-arrow-right-circle-fill"></i> Send
+                    </button>
+                </div>
+            </form>
+            
+
+        </div>
+    
+ 
+    
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const selectCountry = document.getElementById('inputCountry');
+        const selectPhonePrefix = document.getElementById('phonePrefix');
+    
+        // Chargement des pays depuis l'API Restcountries
+        fetch('https://restcountries.com/v3.1/all')
+            .then(response => response.json())
+            .then(data => {
+                // Tri des pays par nom commun
+                data.sort((a, b) => {
+                    if (a.name.common < b.name.common) return -1;
+                    if (a.name.common > b.name.common) return 1;
+                    return 0;
+                });
+    
+                // Ajout des options pour les pays dans le select #inputCountry
+                data.forEach(country => {
+                    const option = document.createElement('option');
+                    option.textContent = country.name.common;
+                    selectCountry.appendChild(option);
+                });
+    
+               
+            })
+            .catch(error => {
+                console.error('Error fetching countries:', error);
+            });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#successModal').modal('show');
+
+        
+    });
+</script>
+{% endblock %}
+{% endblock content %}

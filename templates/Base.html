@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Blessed Foundation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="charity, foundation, donations, community service">
+    <meta name="description" content="Blessed Foundation aims to make a positive impact through various charitable actions and community services. Join us in our mission.">
+
+    <!-- Google Fonts -->
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheets -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheets -->
+    <link href="{% static "lib/owlcarousel/assets/owl.carousel.min.css" %}" rel="stylesheet">
+    <link href="{% static "lib/lightbox/css/lightbox.min.css" %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Spinner Start -->
+    <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid fixed-top px-0">
+        <div class="container px-0">
+            <div class="topbar">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-8">
+                        <div class="topbar-info d-flex flex-wrap">
+                            <a href="#" class="text-light me-4"><i class="fas fa-envelope text-white me-2"></i>Blessedfoundation@gmail.com</a>
+                            <a href="#" class="text-light"><i class="fas fa-phone-alt text-white me-2"></i>+(1) 9505973287</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="topbar-icon d-flex align-items-center justify-content-end">
+                            <a href="#" class="btn-square text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="btn-square text-white me-2"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="btn-square text-white me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="btn-square text-white me-2"><i class="fab fa-pinterest"></i></a>
+                            <a href="#" class="btn-square text-white me-0"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-xl">
+                <a href="{% url 'Foundation:index' %}" class="navbar-brand ms-3">
+                    <img data-src="{% static "img/blessed.jpg" %}" class="lazyload" id="logo" alt="Blessed Foundation Logo">
+                </a>
+                <button class="navbar-toggler py-2 px-3 me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars text-primary"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto">
+                        <a href="{% url 'Foundation:index' %}" class="nav-item nav-link active">Home</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Foundation</a>
+                            <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                                <a href="{% url 'Foundation:about' %}" class="dropdown-item">About</a>
+                                <a href="{% url 'Foundation:Action' %}" class="dropdown-item">Field of Action</a>
+                                <a href="{% url 'Foundation:biographie' %}" class="dropdown-item">Biography</a>
+                                <a href="{% url 'Foundation:equipe' %}" class="dropdown-item">Our Team</a>
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Impact</a>
+                            <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                                <a href="{% url 'Foundation:realisation' %}" class="dropdown-item">Achievements</a>
+                                <a href="{% url 'Foundation:event' %}" class="dropdown-item">Events</a>
+                                <a href="{% url 'Foundation:campagne' %}" class="dropdown-item">Campaigns</a>
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Join Us</a>
+                            <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                                <a href="{% url 'Foundation:partenaire' %}" class="dropdown-item">Become a Partner</a>
+                                <a href="{% url 'Foundation:ambassadeur' %}" class="dropdown-item">Become an Ambassador</a>
+                                <a href="{% url 'Foundation:adherer' %}" class="dropdown-item">Join</a>
+                                <a href="{% url 'Foundation:histoire' %}" class="dropdown-item">Tell Your Story</a>
+                            </div>
+                        </div>
+                        <a href="{% url 'Foundation:contact' %}" class="nav-item nav-link">Contact</a>
+
+                        {% if user.is_superuser %}
+                        <a href="{% url 'admin:index' %}" class="nav-item nav-link">Administration</a>
+                        {% endif %}
+
+                    </div>
+                    <div class="d-flex align-items-center flex-nowrap pt-xl-0" style="margin-left: 15px;">
+                        <a href="{% url 'Paiement:donation' %}" class="btn-hover-bg btn btn-primary text-white py-2 px-4 me-3">Donate Now</a>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <button class="Btn1">
+                        <div class="sign">
+                            <svg viewBox="0 0 512 512">
+                                <path
+                                    d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32zm12.228 3l-4.604-3.747.666-.753 6.112 5-6.101 5-.679-.737 4.608-3.763h-14.828v-1h14.826z"
+                                ></path>
+                            </svg>
+                        </div>
+                        <div class="text"><a href="{% url 'logout' %}">Logout</a></div>
+                    </button>
+
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-primary logout_petit_ecran text-white p-4" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                    {% else %}
+                    <label class="popup">
+                        <input type="checkbox" />
+                        <div tabindex="0" class="burger">
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="white"
+                            height="20"
+                            width="20"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                            d="M12 2c2.757 0 5 2.243 5 5.001 0 2.756-2.243 5-5 5s-5-2.244-5-5c0-2.758 2.243-5.001 5-5.001zm0-2c-3.866 0-7 3.134-7 7.001 0 3.865 3.134 7 7 7s7-3.135 7-7c0-3.867-3.134-7.001-7-7.001zm6.369 13.353c-.497.498-1.057.931-1.658 1.302 2.872 1.874 4.378 5.083 4.972 7.346h-19.387c.572-2.29 2.058-5.503 4.973-7.358-.603-.374-1.162-.811-1.658-1.312-4.258 3.072-5.611 8.506-5.611 10.669h24c0-2.142-1.44-7.557-5.631-10.647z"
+                            ></path>
+                        </svg>
+                        </div>
+                        <nav class="popup-window">
+                        <legend>Quick Start</legend>
+                        <ul>
+                            <li>
+                            <a href="{% url 'login' %}" class="btn">
+                                <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.2"
+                                stroke-linecap="round"
+                                xmlns="http://www.w3.org/2000/svg"
+                                >
+                                <path
+                                    d="M19 4v6.406l-3.753 3.741-6.463-6.462 3.7-3.685h6.516zm2-2h-12.388l1.497 1.5-4.171 4.167 9.291 9.291 4.161-4.193 1.61 1.623v-12.388zm-5 4c.552 0 1 .449 1 1s-.448 1-1 1-1-.449-1-1 .448-1 1-1zm0-1c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm6.708.292l-.708.708v3.097l2-2.065-1.292-1.74zm-12.675 9.294l-1.414 1.414h-2.619v2h-2v2h-2v-2.17l5.636-5.626-1.417-1.407-6.219 6.203v5h6v-2h2v-2h2l1.729-1.729-1.696-1.685z"
+                                ></path>
+                                </svg>
+                                <span>Log In</span>
+                            </a>
+                            </li>
+                            <li>
+                            <a href="{% url 'register' %}" class="btn">
+                                <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1"
+                                stroke-linecap="round"
+                                xmlns="http://www.w3.org/2000/svg"
+                                >
+                                <path
+                                    d="M2.598 9h-1.055c1.482-4.638 5.83-8 10.957-8 6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5c-5.127 0-9.475-3.362-10.957-8h1.055c1.443 4.076 5.334 7 9.902 7 5.795 0 10.5-4.705 10.5-10.5s-4.705-10.5-10.5-10.5c-4.568 0-8.459 2.923-9.902 7zm12.228 3l-4.604-3.747.666-.753 6.112 5-6.101 5-.679-.737 4.608-3.763h-14.828v-1h14.826z"
+                                ></path>
+                                </svg>
+                                <span>Sign Up</span>
+                            </a>
+                            </li>
+                        </ul>
+                        </nav>
+                    </label>
+                    {% endif %}
+                  
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Content Start -->
+    <div id="content" class="bg-white">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <!-- Content End -->
+  <!-- Footer Start -->
+ <footer>
+    <div class="container-fluid footer bg-dark text-body py-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="footer-item">
+                        <h4 class="mb-4 text-white">Newsletter</h4>
+                        <p class="mb-4">Subscribe to our newsletter to receive news.</p>
+                        <div class="position-relative mx-auto">
+                            <input class="form-control border-0 bg-secondary w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
+                            <button type="button" class="btn-hover-bg btn btn-primary position-absolute top-0 end-0 py-2 mt-2 me-2">SignUp</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <section class="">
+                    <div class="container text-center text-md-start">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-6 col-xl-3">
+                                <div class="footer-item d-flex flex-column">
+                                    <h4 class="mb-4 text-white">Quick link</h4>
+                                    <a href="{% url 'Foundation:index' %}"><i class="fas fa-angle-right me-2"></i> Home</a>
+                                    <a href="{% url 'Foundation:about' %}"><i class="fas fa-angle-right me-2"></i> About</a>
+                                    <a href="{% url 'Foundation:biographie' %}"><i class="fas fa-angle-right me-2"></i> Biography </a>
+                                    <a href="{% url 'Foundation:partenaire' %}"><i class="fas fa-angle-right me-2"></i> Become Partner</a>
+                                    <a href="{% url 'Foundation:ambassadeur' %}"><i class="fas fa-angle-right me-2"></i> Become Ambassador</a>
+                                    <a href="{% url 'Foundation:about' %}"><i class="fas fa-angle-right me-2"></i> Join</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-6 col-xl-3">
+                                <div class="footer-item d-flex flex-column">
+                                    <h4 class="mb-4 text-white">Contact</h4>
+                                
+                                    <p>
+                                        <i class="fas fa-map-marker-alt" style="color:green"></i> Bandja centre, Lumbumbashi <br>
+                                        <i class="fas fa-envelope" style="color:green"></i> info@blessedfoundation.org <br>
+                                        <i class="fas fa-phone" style="color:green"></i> +237 675 05 02 98 <br>
+                                        <i class="fas fa-phone" style="color:green"></i> +237 691 59 97 63 <br>
+                                        <i class="fas fa-phone" style="color:green"></i> +44 7308 491 119 <br>
+                                    </p>
+                                
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-6 col-xl-3">
+                                <div class="footer-item">
+                                <img data-src="../static/img/blessed.jpg" class="lazyload w-50" alt="">
+                                <p></p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- Crédits -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2024 Tous droits réservés :
+        <a class="text-white" href="https://blessedfoundation.org/">Blessed Foundation</a>
+    </div>
+ </footer>
+<!-- Footer End -->
+   
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+    <!-- JavaScript Libraries -->
+    
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"></script> 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js" ></script>>
+ 
+ <script src="{% static '/lib/easing/easing.min.js' %}"></script>
+ <script src="{% static '/lib/waypoints/waypoints.min.js' %}"></script>
+ <script src="{% static '/lib/counterup/counterup.min.js' %}"></script>
+ <script src="{% static '/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+ <script src="{% static '/lib/lightbox/js/lightbox.min.js' %} "></script>
+    <!-- Template Javascript -->
+    <script src="{% static "js/main.js" %}"></script>
+
+</body>
+
+</html>

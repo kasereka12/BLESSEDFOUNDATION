@@ -1,0 +1,63 @@
+{% extends "Base.html" %}
+
+{% block content %}
+
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h3 class="text-white display-3 mb-4">Genese</h1>
+               <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'genese' %}">Genese</a></li>
+                  
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+
+        <!-- About Start -->
+         
+        <div class=" ">
+            <div class="row mb-3 py-5">
+                <div class="col-md-8 themed-grid-col">
+                  <div class="pb-3">
+                        <p class="fs-5 mb-4">
+                
+                                According to   <span style="color:red">Benite Mukombo</span> based on his own tragic experience,  he grew up in Lubumbashi, a small town in Africa, where he lived in a modest house with his parents and three siblings. 
+                                They often lacked basic necessities and sometimes went to bed hungry due to financial struggles.
+                            </p>
+                           <p class="fs-5 mb-4">
+                            At the tender age of 9, his parents sent him and his siblings to sell vegetables they grew in their garden on the roadside to earn money for food, unable to afford new clothes like other children. </p>
+                           <p class="fs-5 mb-4">
+                            Recalling those challenging times, Benite mentioned how witnessing his parents' hardships and the fear it caused left him feeling hopeless from a young age. While other children played and enjoyed their childhood, they were occupied with helping their parents survive. </p>
+                           <p class="fs-5 mb-4">
+                            Reflecting on his past, Benite empathized with the difficulty parents face when they cannot provide for their children, describing it as potentially traumatic.  </p>
+                           <p class="fs-5 mb-4">
+                                From these past experiences, he found inspiration to:
+                            </p>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 themed-grid-col">
+                       <p class="text-dark"><i class=" fa fa-check  me-2" style="color:green"></i> help families struck by poverty and who have lost all hope.</p>
+                        <p class="text-dark"><i class=" fa fa-check  me-2" style="color:green"></i> to assist underprivileged children, single mothers, and anyone who has lost all hope due to the challenges of daily life</p>
+
+                        
+                    
+                    </div>
+                    <div class="col-md-6 themed-grid-col"> 
+                      <p class="text-dark"><i class=" fa fa-check  me-2" style="color:green"></i> facilitate access to local support programs to aid those in need</p>
+                        <p class="text-dark"><i class=" fa fa-check  me-2" style="color:green"></i> help you find the light again.</p>
+                   
+                </div>
+                  </div>
+                </div>
+                <div class="col-md-4 themed-grid-col"> <div class="h-100">
+                    <img src="../static/img/blessed.jpg" class="img-fluid w-100 h-100" alt="Image">
+                </div></div>
+              </div>
+          
+          
+
+
+{% endblock content %}
