@@ -51,7 +51,8 @@
         </div>
      
     </div>
-</div>{% endif %}
+</div>
+{% endif %}
 
 <div class="container">
     <h3 class="text-center p-5 m-3">Your Information</h3>
@@ -69,7 +70,7 @@
                 <input class="form-check-input" type="checkbox" name="anomy" id="anomy">
                 <label class="form-check-label" for="anomy">Faire un don anonyme</label>
             </div>
-        
+            {% if mode.type_paiement == 'ORANGE_MONEY' or mode.type_paiement == 'M_PESA'  %}
             <div class="col-md-6">
                 <label for="transfert" class="form-label">Entrer le code de transfert<span class="required">*</span></label>
                 <input type="text" class="form-control" id="transfert" name="transfert" required>
@@ -78,7 +79,7 @@
                 <label for="destinataire" class="form-label">Entrer le nom du destinataire<span class="required">*</span></label>
                 <input type="text" class="form-control" id="destinataire" name="destinataire" required>
             </div>
-        
+            {% endif %}
             <div id="anomous">
                 <div class="col-12">
                     <label for="nom" class="form-label">Name <span class="required">*</span></label>
