@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'blessed_Foundation.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blessed_Foundation',
+        'NAME': 'blessed_Foundations',
         'USER': 'root',  # Utilisation de 'USER' au lieu de 'USERNAME'
         'PASSWORD': '',  # Votre mot de passe de base de données MySQL
         'HOST': 'localhost',

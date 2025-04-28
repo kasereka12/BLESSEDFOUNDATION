@@ -210,8 +210,7 @@ def Histoires(request):
        
     return render(request,'blessed_Foundation/join/RaconteSonHistoire.html')
 
-#join End
-#Donation Start
+
 
 #Contact start
 def contact(request):
