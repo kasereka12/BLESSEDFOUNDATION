@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'Foundation.apps.FoundationConfig',
     'accounts.apps.AccountsConfig',
     'paiement.apps.PaiementConfig',
-    'paypal.standard.ipn'
+    'paypal.standard.ipn',
     
 ]
 
