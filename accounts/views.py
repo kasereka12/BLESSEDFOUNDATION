@@ -23,6 +23,10 @@ def login_user(request):
             return redirect('login')
         else:
             messages.info(request,"Identifiant ou mot de passe incorrect")
+        
+        
+    if request.user.is_authenticated:
+        return redirect('Foundation:index')
     return render(request,'blessed_Foundation/login.html')
 
 
@@ -39,7 +43,7 @@ def register_user(request):
             return redirect('register')
         user = User.objects.create_user(username=email, email=email, password=password,first_name=first_name, last_name=last_name)
         messages.success(request, "Inscription réussie. Vous pouvez vous connecter maintenant.")
-        return redirect('Foundation:index')     
+        return redirect('Accounts:login')     
     return render(request, 'blessed_Foundation/register.html')
 
 
