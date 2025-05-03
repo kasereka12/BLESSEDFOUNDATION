@@ -22,7 +22,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+CSRF_TRUSTED_ORIGINS = ['*']
+#CSRF_COOKIE_SECURE = True  # si tu es en HTTPS
+SESSION_COOKIE_SECURE = True  # idem
 
 
 # Quick-start development settings - unsuitable for production
@@ -55,6 +57,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.csrf.CsrfViewMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
