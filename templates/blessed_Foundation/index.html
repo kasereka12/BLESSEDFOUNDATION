@@ -1,1060 +1,439 @@
+{% extends 'Base.html' %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blessed Foundation - Redesign Preview</title>
-    {% load static %}
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #2E7D32;
-            --secondary: #004D40;
-            --light: #F5F5F5;
-            --dark: #263238;
-            --accent: #FFC107;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: #333;
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
-        
-        .text-primary {
-            color: var(--primary) !important;
-        }
-        
-        .bg-primary {
-            background-color: var(--primary) !important;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            border-radius: 30px;
-            padding: 10px 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--secondary);
-            border-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-outline-primary {
-            color: var(--primary);
-            border-color: var(--primary);
-            border-radius: 30px;
-            padding: 10px 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-primary:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
+{% block content %}
 
-        /* Hero Section */
-        .hero-section {
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/api/placeholder/1920/1080') center/cover no-repeat;
-        }
+     
         
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            width: 90%;
-            max-width: 900px;
-            z-index: 10;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            color: white;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            animation: fadeInDown 1s ease;
-        }
-        
-        .hero-text {
-            font-size: 1.25rem;
-            color: white;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero-buttons {
-            animation: fadeIn 1.5s ease;
-        }
-        
-        /* About Section */
-        .about-section {
-            padding: 100px 0;
-            background: url('/api/placeholder/1920/1080') center/cover fixed;
-            position: relative;
-        }
-        
-        .about-section::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-        }
-        
-        .about-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .quote-card {
-            background-color: var(--secondary);
-            color: white;
-            border-radius: 15px;
-            padding: 30px;
-            height: 100%;
-            transition: all 0.3s ease;
-        }
-        
-        .quote-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .sponsor-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            height: 100%;
-            transition: all 0.3s ease;
-            border-top: 5px solid var(--primary);
-        }
-        
-        .sponsor-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Services Section */
-        .services-section {
-            padding: 100px 0;
-            background-color: var(--light);
-        }
-        
-        .section-title {
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--primary);
-        }
-        
-        .service-card {
-            background-color: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-img {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-img img {
-            transition: transform 0.5s ease;
-        }
-        
-        .service-card:hover .service-img img {
-            transform: scale(1.1);
-        }
-        
-        .service-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-        }
-        
-        .service-overlay h4 {
-            color: white;
-            margin: 0;
-        }
-        
-        .service-content {
-            padding: 25px;
-        }
-        
-        /* Donation Section */
-        .donation-section {
-            padding: 100px 0;
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/api/placeholder/1920/1080') center/cover fixed;
-            color: white;
-        }
-        
-        .donation-card {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            height: 100%;
-            position: relative;
-        }
-        
-        .donation-img {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .donation-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .donation-card:hover .donation-img img {
-            transform: scale(1.1);
-        }
-        
-        .donation-content {
-            background: linear-gradient(to top, var(--secondary), var(--primary));
-            padding: 30px;
-            position: relative;
-        }
-        
-        .donation-badge {
-            position: absolute;
-            top: -20px;
-            right: 20px;
-            background-color: var(--accent);
-            color: var(--dark);
-            font-weight: 600;
-            padding: 8px 15px;
-            border-radius: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .donation-cta {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 40px;
-            margin-top: 50px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Achievements Section */
-        .achievements-section {
-            padding: 100px 0;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1920/1080') center/cover fixed;
-            color: white;
-        }
-        
-        .achievement-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 40px 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            height: 100%;
-        }
-        
-        .achievement-card:hover {
-            transform: translateY(-10px);
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .achievement-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-        
-        .achievement-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 5px;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        /* Testimonials Section */
-        .testimonials-section {
-            padding: 100px 0;
-            background-color: var(--light);
-        }
-        
-        .testimonial-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            margin: 0 10px;
-            position: relative;
-        }
-        
-        .testimonial-card::before {
-            content: '\201C';
-            font-family: Georgia, serif;
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            font-size: 5rem;
-            color: var(--primary);
-            opacity: 0.3;
-        }
-        
-        /* Campaigns Section */
-        .campaigns-section {
-            padding: 100px 0;
-        }
-        
-        .campaign-card {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .campaign-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .campaign-img {
-            height: 250px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .campaign-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .campaign-card:hover .campaign-img img {
-            transform: scale(1.1);
-        }
-        
-        .campaign-meta {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .campaign-meta span {
-            color: white;
-            font-size: 0.85rem;
-        }
-        
-        .campaign-progress {
-            height: 10px;
-            background-color: #e9ecef;
-            border-radius: 0;
-            overflow: visible;
-        }
-        
-        .campaign-progress .progress-bar {
-            background-color: var(--primary);
-            position: relative;
-        }
-        
-        .campaign-progress .progress-bar span {
-            position: absolute;
-            right: 0;
-            top: -25px;
-            background-color: var(--primary);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 5px;
-            font-size: 0.75rem;
-        }
-        
-        .campaign-progress .progress-bar span::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 5px solid var(--primary);
-        }
-        
-        .campaign-content {
-            padding: 25px;
-        }
-        
-        /* Team Section */
-        .team-section {
-            padding: 100px 0;
-            background-color: var(--light);
-        }
-        
-        .team-img {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-        }
-        
-        .team-img img {
-            width: 100%;
-            transition: transform 0.5s ease;
-        }
-        
-        .team-img:hover img {
-            transform: scale(1.1);
-        }
-        
-        .team-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            color: white;
-            transform: translateY(0);
-            transition: all 0.3s ease;
-        }
-        
-        .team-img:hover .team-info {
-            transform: translateY(-10px);
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 991.98px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-text {
-                font-size: 1rem;
-            }
-        }
-        
-        @media (max-width: 767.98px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .donation-img {
-                height: 200px;
-            }
-        }
-    </style>
-</head>
-<body>
+       <!-- Carousel Start -->
+    <div class="container-fluid carousel-header vh-100 px-0 position-relative">
+        <!-- Contenu texte devant le carousel -->
+        <div class="position-absolute top-50 start-50 translate-middle text-center text-white" style="z-index: 1;">
+            <div class="p-3" style="max-width: 900px;">
+             
+                <h1 class="display-1 text-capitalize mb-4 font-weight-bold" style="color: rgba(37, 67, 54, 1); font-size: 3rem;">THE BLESSED FOUNDATION</h1>
+                <div class="d-flex align-items-center justify-content-center">
+                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4 px-md-5" href="{% url 'Paiement:donation' %}">Donate</a>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">THE BLESSED FOUNDATION</h1>
-            <p class="hero-text">Supporting orphans, widows, and disadvantaged children since 2019 in the Democratic Republic of Congo</p>
-            <div class="hero-buttons">
-                <a href="#" class="btn btn-primary me-3 mb-2 mb-md-0">Donate Now</a>
-                <a href="#" class="btn btn-outline-primary" style="background-color: rgba(255,255,255,0.2); color: white;">Join With Us</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="container about-content">
-            <div class="row mb-5">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h5 class="text-primary text-uppercase fw-bold mb-2">OUR MISSION</h5>
-                    <h2 class="mb-4">Building a Sustainable Future for Vulnerable Communities</h2>
-                    <p class="lead">
-                        Blessed Foundation was created in Democratic Republic of Congo in 2019 to support orphans, widows, disadvantaged children and women who take sole parental responsibilities.
-                    </p>
-                    <hr class="w-25 mx-auto my-4" style="height: 3px; background-color: var(--primary);">
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="quote-card">
-                        <h2 class="mb-4">Help Family</h2>
-                        <blockquote class="mb-4">
-                            <p class="fs-4 fw-bold mb-3">"Family means no one gets left behind or forgotten."</p>
-                            <footer class="blockquote-footer text-white-50">David Ogden Stiers</footer>
-                        </blockquote>
-                        <a href="#" class="btn btn-light mt-3">Donate Now</a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="sponsor-card">
-                        <h3 class="text-primary mb-3">Sponsor a Child</h3>
-                        <p class="mb-4">Support underprivileged children through educational opportunities and holistic development programs that transform their lives and communities.</p>
-                        <ul class="mb-4">
-                            <li class="mb-2">Provide quality education</li>
-                            <li class="mb-2">Ensure proper nutrition</li>
-                            <li class="mb-2">Support healthcare needs</li>
-                            <li>Create opportunities for a better future</li>
-                        </ul>
-                        <a href="#" class="btn btn-primary">Become a Sponsor</a>
-                    </div>
+                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4 px-md-5 ms-2" href="{% url 'Foundation:adherer' %}">Join With Us</a>
                 </div>
             </div>
         </div>
-    </section>
+    
+        <!-- Carousel -->
+        <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel" style="z-index: 0;">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active"></li>
+                
+                
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <!-- Image for Large Screens -->
+                    <img data-src="{% static "/img/home.jpg" %}" class="img-fluid d-none d-lg-block lazyload" alt="Image" style="width: 100%; height:auto;">
 
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="container">
-            <div class="section-title text-center">
-                <h5 class="text-primary text-uppercase fw-bold mb-2">OUR FOCUS AREAS</h5>
-                <h2>Building a Sustainable Future</h2>
+                    <!-- Image for Small and Medium Screens (without specific styles) -->
+                    <img data-src="{% static "/img/home.jpg" %}" class="img-fluid d-block d-lg-none lazyload" alt="Image">
+                </div>
+                
+                
             </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <div class="service-img">
-                            <img src="/api/placeholder/600/400" class="img-fluid" alt="Education">
-                            <div class="service-overlay">
-                                <h4>Education</h4>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="background: url(../static/img/SL.jpg); background-size:cover;">
+       <div class="container">
+        <div class="p-5 mb-4  rounded-3">
+            <div class="container-fluid py-0">
+              <p class="col-md-12 fs-4 text-white text-uppercase font-weight-bold">
+                Blessed foundation was created in democratic republic of Congo in 2019 to support orphans, widows, disadvantaged children and women who take sole parental responsibilities 
+                 
+            </p>
+            <hr class="my-4 bg-white" style="width: 150px;">
+        </div>
+          </div>
+         
+          <div class="row align-items-md-stretch">
+            <div class="col-md-6">
+              <div  class="h-100 p-5 text-white  rounded-3">
+                <h1 class="text-white text-uppercase" >Help family</h1>
+                <figure class="mb-0">
+                    <blockquote class="blockquote font-weight-bold" style="color: rgba(37, 67, 54, 1)">
+                      <p style="font-weight:bold; font-size:25px;">Family means no one gets left behind or forgotten</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer mb-0 text-muted">
+                        David Ogden Stiers 
+                    </figcaption>
+                  </figure>
+                <div class="donation-btn d-flex align-items-center justify-content-start p-5">
+                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Paiement:donation' %}">Donate !</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-green">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: green">Sponsor a Child</h5>
+                        <p class="card-text">Support underprivileged children through educational opportunities and holistic development programs.</p>
+                        <a href="{% url 'Foundation:partenaire' %}" class="btn btn-primary text-white">Become a Sponsor</a>
+                    </div>
+                </div>
+                
+                       
+            </div>
+          </div>
+       </div>   
+    </div>
+
+
+
+
+        <!-- Services Start -->
+        <div class="container-fluid service py-5 bg-light">
+            <div class="container py-5">
+                <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+                    <h5 class="text-uppercase" style="color : green">Nos Axes d'action</h5>
+                    <h1 class="mb-0">Building a Sustainable Future</h1>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class=" p-4">
+                            <div class="service-item">
+                                <img data-src="{% static 'img/service-1.jpg' %}" class="img-fluid w-100 lazyload" alt="Image">
+                                <div class="service-link">
+                                    <a href="#" class="h4 mb-0">Education</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="service-content">
-                            <p>
+                            <p class="my-4 ">
                                 Education is one of the most crucial investments we can make to ensure that every 
                                 girl and boy receives the quality education needed to unlock their potential and secure their future.
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <div class="service-img">
-                            <img src="/api/placeholder/600/400" class="img-fluid" alt="Agriculture">
-                            <div class="service-overlay">
-                                <h4>Agriculture</h4>
+                    <div class="col-md-4">
+                        <div class=" p-4">
+                            <div class="service-item">
+                                <img data-src="{% static "/img/service.jpg" %}" class="img-fluid w-100 lazyload" alt="Image">
+                                <div class="service-link">
+                                    <a href="#" class="h4 mb-0">AGRICULTURE</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="service-content">
-                            <p>
+                            <p class="my-4 ">
                                 When agricultural practices respect the diversity of flora and fauna, farming significantly contributes 
                                 to cultivated biodiversity through a variety of crops and the creation of specific habitats.
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="service-card">
-                        <div class="service-img">
-                            <img src="/api/placeholder/600/400" class="img-fluid" alt="Well-being and Health">
-                            <div class="service-overlay">
-                                <h4>Well-being and Health</h4>
-                            </div>
-                        </div>
-                        <div class="service-content">
-                            <p>
-                                Awareness raising, screening campaigns, support in health monitoring, and our innovative "Queen's Holiday" concept help improve well-being in communities.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 text-center mt-5">
-                    <a href="#" class="btn btn-primary">Learn More About Our Work</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Donation Section -->
-    <section class="donation-section">
-        <div class="container">
-            <div class="section-title text-center">
-                <h5 class="text-uppercase fw-bold mb-2" style="color: var(--accent);">Make a Difference</h5>
-                <h2 class="text-white">Your Donation Will Save Lives</h2>
-                <p class="text-white-50 mx-auto" style="max-width: 700px;">Every contribution, no matter how small, creates a ripple effect that transforms lives and communities.</p>
-            </div>
-            <div class="row g-4 mt-4">
-                <div class="col-lg-4">
-                    <div class="donation-card">
-                        <div class="donation-img">
-                            <img src="/api/placeholder/600/400" alt="Education">
-                        </div>
-                        <div class="donation-content">
-                            <span class="donation-badge">Education</span>
-                            <h4 class="mb-3">Support Underprivileged Children</h4>
-                            <p class="mb-4">Our foundation is dedicated to providing educational opportunities and support to underprivileged children, empowering them to build a brighter future.</p>
-                            <a href="#" class="btn btn-light">Donate Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="donation-card">
-                        <div class="donation-img">
-                            <img src="/api/placeholder/600/400" alt="Family Support">
-                        </div>
-                        <div class="donation-content">
-                            <span class="donation-badge">Family</span>
-                            <h4 class="mb-3">Supporting Single Mothers</h4>
-                            <p class="mb-4">We support single mothers by providing resources, education, and opportunities for them to thrive despite challenges.</p>
-                            <a href="#" class="btn btn-light">Donate Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="donation-card">
-                        <div class="donation-img">
-                            <img src="/api/placeholder/600/400" alt="Creativity">
-                        </div>
-                        <div class="donation-content">
-                            <span class="donation-badge">Creativity</span>
-                            <h4 class="mb-3">Social Reintegration</h4>
-                            <p class="mb-4">We offer all young people a capital of experiences, assets and relationships to pursue by all means.</p>
-                            <a href="#" class="btn btn-light">Donate Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="donation-cta row align-items-center mt-5">
-                <div class="col-lg-8">
-                    <h5 class="text-uppercase fw-bold" style="color: var(--accent);">Blessed Foundation</h5>
-                    <h2 class="text-white mb-0">Support the Poor and Change Lives</h2>
-                </div>
-                <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
-                    <a href="#" class="btn btn-light btn-lg">Donate Today</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section class="achievements-section">
-        <div class="container">
-            <div class="section-title text-center">
-                <h5 class="text-uppercase fw-bold mb-2" style="color: var(--accent);">Our Impact</h5>
-                <h2 class="text-white">What We've Accomplished Together</h2>
-            </div>
-            <div class="row g-4 mt-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="achievement-card">
-                        <div class="achievement-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="achievement-number">500+</div>
-                        <h4 class="text-white">School Fees Paid</h4>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="achievement-card">
-                        <div class="achievement-icon">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                        </div>
-                        <div class="achievement-number">$653</div>
-                        <h4 class="text-white">Funds Collected</h4>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="achievement-card">
-                        <div class="achievement-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="achievement-number">60+</div>
-                        <h4 class="text-white">Members</h4>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="achievement-card">
-                        <div class="achievement-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <div class="achievement-number">487+</div>
-                        <h4 class="text-white">Days of Help</h4>
-                    </div>
-                </div>
-                <div class="col-12 text-center mt-5">
-                    <a href="#" class="btn btn-light">Join With Us</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-title text-center">
-                <h5 class="text-primary text-uppercase fw-bold mb-2">Testimonials</h5>
-                <h2>Voices of Impact</h2>
-            </div>
-            <div class="row mt-5">
-                <div class="col-lg-8 mx-auto">
-                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="testimonial-card text-center">
-                                    <p class="lead mb-4">Through the support of Blessed Foundation, my children have been able to attend school consistently for the first time. This has changed our family's future.</p>
-                                    <h5 class="mb-1">Anonymous</h5>
-                                    <p class="text-muted">Beneficiary</p>
+                    <div class="col-md-4">
+                        <div class=" p-4">
+                            <div class="service-item">
+                                <img data-src="{% static "/img/bien&etre.jpg" %}" class="img-fluid w-100 lazyload" alt="Image">
+                                <div class="service-link">
+                                    <a href="#" class="h4 mb-0">well-being and health</a>
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <div class="testimonial-card text-center">
-                                    <p class="lead mb-4">As a single mother, I struggled to provide for my children until Blessed Foundation offered support and training. Now I can sustain my family with dignity.</p>
-                                    <h5 class="mb-1">Anonymous</h5>
-                                    <p class="text-muted">Beneficiary</p>
-                                </div>
-                            </div>
+                            <p class="my-4 ">
+                                Awareness raising, screening campaigns, support in health monitoring, “Queen’s Holiday” concept</p>
                         </div>
-                        <div class="d-flex justify-content-center mt-4">
-                            <button class="btn btn-sm btn-primary mx-2" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="btn btn-sm btn-primary mx-2" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
+                               
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Campaigns Section -->
-    <section class="campaigns-section">
-        <div class="container">
-            <div class="row align-items-center mb-5">
-                <div class="col-lg-5">
-                    <h5 class="text-primary text-uppercase fw-bold mb-2">Current Campaigns</h5>
-                    <h2>Campaigns You Can Fund</h2>
-                </div>
-                <div class="col-lg-7">
-                    <p class="lead text-end">Our current initiatives that need your support to create meaningful change in vulnerable communities.</p>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-12">
-                    <div class="campaign-card">
-                        <div class="campaign-img">
-                            <img src="/api/placeholder/800/400" alt="Campaign">
-                            <div class="campaign-meta">
-                                <span>
-                                    <i class="fas fa-chart-bar text-primary me-2"></i>Goal: $5,000
-                                </span>
-                                <span>
-                                    <i class="fa fa-thumbs-up text-primary me-2"></i>Raised: $3,250
-                                </span>
-                            </div>
-                        </div>
-                        <div class="progress campaign-progress">
-                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
-                                <span>65%</span>
-                            </div>
-                        </div>
-                        <div class="campaign-content">
-                            <h4 class="mb-3">Community School Building Project</h4>
-                            <p class="mb-4">Help us build a new school to support education in rural areas where children lack access to quality learning facilities.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary">Donate to This Campaign</a>
-                                <a href="#" class="text-primary fw-bold">View Details <i class="fas fa-arrow-right ms-1"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 text-center mt-4">
-                    <a href="#" class="btn btn-outline-primary">View All Campaigns</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Join Us Section -->
-    <section class="team-section">
-        <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-5">
-                    <div class="row g-4">
-                        <div class="col-6">
-                            <div class="team-img">
-                                <img src="/api/placeholder/400/600" class="img-fluid" alt="Team Member">
-                                <div class="team-info">
-                                    <h5 class="mb-1">Blessed Team</h5>
-                                    <p class="mb-0">Communicator</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="team-img mt-5">
-                                <img src="/api/placeholder/400/600" class="img-fluid" alt="Team Member">
-                                <div class="team-info">
-                                    <h5 class="mb-1">Blessed Team</h5>
-                                    <p class="mb-0">Coordinator</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="ps-lg-5">
-                        <h5 class="text-primary text-uppercase fw-bold mb-2">Become a Member</h5>
-                        <h2 class="mb-4">Join Us to Help Those Who Are in Need</h2>
-                        <p class="lead mb-4">When you join the Blessed Foundation, you become part of a community dedicated to creating sustainable change for vulnerable populations.</p>
-                        
-                        <div class="row g-4 mb-5">
-                            <div class="col-md-6">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0">
-                                        <i class="fas fa-check-circle text-primary fa-2x me-3"></i>
-                                    </div>
-                                    <div>
-                                        <h5>We are friendly to each other</h5>
-                                        <p class="text-muted">Our community values respect and collaboration.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0">
-                                        <i class="fas fa-check-circle text-primary fa-2x me-3"></i>
-                                    </div>
-                                    <div>
-                                        <h5>Free training provided</h5>
-                                        <p class="text-muted">We'll equip you with the skills needed to make an impact.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0">
-                                        <i class="fas fa-check-circle text-primary fa-2x me-3"></i>
-                                    </div>
-                                    <div>
-                                        <h5>Help poor environments</h5>
-                                        <p class="text-muted">Make a tangible difference in disadvantaged communities.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0">
-                                        <i class="fas fa-check-circle text-primary fa-2x me-3"></i>
-                                    </div>
-                                    <div>
-                                        <h5>No goal requirements</h5>
-                                        <p class="text-muted">Contribute what you can, when you can.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <a href="#" class="btn btn-primary btn-lg">Join With Us Today</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="py-5" style="background-color: var(--secondary);">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <h3 class="text-white mb-4">Subscribe to Our Newsletter</h3>
-                    <p class="text-white-50 mb-4">Stay updated with our projects, impact stories, and opportunities to get involved.</p>
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <div class="input-group mb-3">
-                                <input type="email" class="form-control" placeholder="Your email address">
-                                <button class="btn btn-light" type="button">Subscribe</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white pt-5 pb-4">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <h4 class="mb-4">The Blessed Foundation</h4>
-                    <p>Supporting orphans, widows, and disadvantaged children since 2019 in the Democratic Republic of Congo.</p>
-                    <div class="d-flex mt-4">
-                        <a href="#" class="btn btn-outline-light btn-sm me-2"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="btn btn-outline-light btn-sm me-2"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="btn btn-outline-light btn-sm me-2"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6">
-                    <h5 class="mb-4">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white-50">Home</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50">About Us</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50">Our Work</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50">Campaigns</a></li>
-                        <li><a href="#" class="text-white-50">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="mb-4">Our Programs</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white-50">Education Support</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50">Agricultural Projects</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50">Health & Well-being</a></li>
-                        <li class="mb-2"><a href="#" class="text-white-50">Women Empowerment</a></li>
-                        <li><a href="#" class="text-white-50">Child Sponsorship</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3">
-                    <h5 class="mb-4">Contact Us</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-primary"></i> Democratic Republic of Congo</li>
-                        <li class="mb-2"><i class="fas fa-phone me-2 text-primary"></i> +123 456 7890</li>
-                        <li class="mb-2"><i class="fas fa-envelope me-2 text-primary"></i> info@blessedfoundation.org</li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="my-4" style="background-color: rgba(255,255,255,0.1)">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0 text-white-50">&copy; 2025 The Blessed Foundation. All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0 text-white-50">Designed with <i class="fas fa-heart text-primary"></i> for a better world</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <a href="#" class="btn btn-primary btn-lg back-to-top" style="position: fixed; bottom: 20px; right: 20px; display: none; z-index: 99;"><i class="fas fa-arrow-up"></i></a>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script>
-        // Show/hide back to top button
-        window.onscroll = function() {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                document.querySelector('.back-to-top').style.display = "block";
-            } else {
-                document.querySelector('.back-to-top').style.display = "none";
-            }
-        };
-
-        // Initialize counters
-        document.addEventListener('DOMContentLoaded', function() {
-            // Simple counter animation
-            const counters = document.querySelectorAll('[data-toggle="counter-up"]');
+                   
+                       
+                
+                     
+                 
+                    
             
-            counters.forEach(counter => {
-                const target = parseInt(counter.innerText);
-                let count = 0;
-                const duration = 2000; // 2 seconds
-                const increment = target / (duration / 16); // 60fps
-                
-                const updateCount = () => {
-                    count += increment;
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count);
-                        setTimeout(updateCount, 16);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                
-                updateCount();
-            });
-        });
-    </script>
-</body>
-</html>
+                    <div class="col-12">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Foundation:Action' %}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- Services End -->
+
+
+        <!-- Donation Start -->
+        <div class="container-fluid donation py-5">
+            <div class="container py-5">
+                <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+                    <h5 class="text-uppercase" style="color : green">Donation</h5>
+                    <h1 class="mb-0">Your money will save someone</h1>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="donation-item">
+                            <img data-src="{% static "/img/donation-1.jpg" %}" class="img-fluid w-100 lazyload" alt="Image">
+                            <div class="donation-content d-flex flex-column">
+                                <h5 class="text-uppercase  mb-4" style="color:green">education</h5>
+                                <a href="{% url 'Paiement:donation' %}" class="btn-hover-color display-6 text-white">Help Us More</a>
+                                <h4 class="text-white mb-4">under privileged children</h4>
+                                <p class="text-white mb-4">Our foundation is dedicated to providing educational opportunities and support to underprivileged children, empowering them to build a brighter future.
+                                </p>
+                                <div class="donation-btn d-flex align-items-center justify-content-start">
+                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Paiement:donation' %}">Donate !</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="donation-item">
+                            <img data-src="{% static "/img/service-2.jpg" %}" class="img-fluid w-100 lazyload" alt="Image">
+                            <div class="donation-content d-flex flex-column">
+                                <h5 class="text-uppercase  mb-4" style="color:green">Family</h5>
+                                <a href="{% url 'Paiement:donation' %}" class="btn-hover-color display-6 text-white">Help Us More</a>
+                                <h4 class="text-white mb-4">Supporting Single Mothers</h4>
+                                <p class="text-white mb-4">
+                                    to support single mothers by providing resources, education, and opportunities for them to thrive despite challenges.
+                                </p>
+                                <div class="donation-btn d-flex align-items-center justify-content-start">
+                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Paiement:donation' %}">Donate !</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="donation-item">
+                            <img data-src="{% static "/img/donation-3.jpg" %}" class="img-fluid w-100 lazyload" alt="Image">
+                            <div class="donation-content d-flex flex-column">
+                                <h5 class="text-uppercase mb-4" style="color:green">creativity</h5>
+                                <a href="{% url 'Paiement:donation' %}" class="btn-hover-color display-6 text-white">Help Us More</a>
+                                <h4 class="text-white mb-4">encourage creativity and social reintegration   </h4>
+                                <p class="text-white mb-4">
+                                    we offer all young people a capital of experiences, assets and relationships to pursue by all means   
+                                </p>
+                                    <div class="donation-btn d-flex align-items-center justify-content-start">
+                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Paiement:donation' %}">Donate !</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="container">
+                            <div class="mt-5 p-5 rounded" style="background: rgba(37, 67, 54, 1);">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col-lg-7">
+                                        <span class="text-color">Blessed Foundation</span>
+                                        <h2 class="mt-2 text-white">Support the poor</h2>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <!-- Ajout de la classe 'btn-lg' pour agrandir le bouton -->
+                                        <a href="{% url 'Paiement:donation' %}" class="btn btn-primary btn-round-full float-lg-right float-md-right float-sm-right btn-lg">Donate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Donation End -->
+
+<!-- Counter Start -->
+<div class="container-fluid counter py-5" style="background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, 0.4)), url(img/volunteers-bg.jpg) center center; background-size: cover;">
+    <div class="container py-5">
+        <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+            <h5 class="text-uppercase" style="color:green">Achievements</h5>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="counter-item text-center border p-5">
+                    <i class="fas fa-thumbs-up fa-4x text-white"></i>
+                    <h3 class="text-white my-4">Payment of school fees</h3>
+                    <div class="counter-counting">
+                        <span class="fs-2 fw-bold" style="color:green" data-toggle="counter-up">500</span>
+                        <span class="h1 fw-bold" style="color:green">+</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="counter-item text-center border p-5">
+                    <i class="fas fa-file-invoice-dollar fa-4x text-white"></i>
+                    <h3 class="text-white my-4">Funds Collected</h3>
+                    <div class="counter-counting text-center border-white w-100" style="border-style: dotted; font-size: 30px;">
+                        <span class=" fs-2 fw-bold" style="color:green" data-toggle="counter-up">653</span>
+                        <span class="h1 fw-bold" style="color:green">$</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="counter-item text-center border p-5">
+                    <i class="fas fa-user fa-4x text-white"></i>
+                    <h3 class="text-white my-4">Member</h3>
+                    <div class="counter-counting text-center border-white w-100" style="border-style: dotted; font-size: 30px;">
+                        <span class=" fs-2 fw-bold" style="color:green" data-toggle="counter-up">60</span>
+                        <span class="h1 fw-bold" style="color:green">+</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="counter-item text-center border p-5">
+                    <i class="fas fa-heart fa-4x text-white"></i>
+                    <h3 class="text-white my-4">Days of Help</h3>
+                    <div class="counter-counting text-center border-white w-100" style="border-style: dotted; font-size: 30px;">
+                        <span class=" fs-2 fw-bold" style="color:green" data-toggle="counter-up">487</span>
+                        <span class="h1 fw-bold" style="color:green">+</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Foundation:adherer' %}">Join With Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Counter End -->
+
+<!-- Testimonials Carousel Start -->
+<div class="container py-5">
+    <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+        <h5 class="text-uppercase" style="color: rgba(37, 67, 54, 1);">Testimonials</h5>
+    </div>
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for histoire in histoires %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <div class="d-flex justify-content-center">
+                    <div class="card border-primary text-center" style="max-width: 700px;">
+                        <div class="card-body">
+                            <h5 class="card-title">Anonymous</h5>
+                            <p class="card-text">{{ histoire.stories }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <button class="testimonial-carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <span class="testimonial-carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="testimonial-carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                <span class="testimonial-carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Testimonials Carousel End -->
+
+<div class="row mb-3">
+    <div class="col-md-4 themed-grid-col">
+        <div class="text-center mx-auto pb-5" style="max-width: 800px;">
+            <h5 class="text-uppercase" style="color: rgba(37, 67, 54, 1);">Recent Campaign</h5>
+            <h1 class="mb-4">Campaigns you can fund</h1>
+        </div>
+    </div>
+    <div class="col-md-8 themed-grid-col">
+        <!-- Causes Carousel -->
+        <div id="causesCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for projet in projets %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="container-fluid causes">
+                        <div class="container py-5">
+                            <div class="row g-4">
+                                <div class="col-lg-12">
+                                    <div class="causes-item">
+                                        <div class="causes-img">
+                                            <img data-src="{{ projet.image.url }}" class="card-img-top img-fluid lazyload" style="height: 350px;" alt="Image">
+                                          
+                                            <div class="causes-link pb-2 px-3">
+                                                <small class="text-white"><i class="fas fa-chart-bar text-primary me-2"></i>Goal: ${{ projet.budget_souhaite }}</small>
+                                                <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised: ${{ projet.budget_actuelle }}</small>
+                                            </div>
+                                         
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                                <span>65%</span>
+                                            </div>
+                                        </div>
+                                        <div class="causes-content p-4">
+                                            <h4 class="mb-3">{{ projet.nom }}</h4>
+                                            <p class="mb-4">{{ projet.description }}</p>
+                                            <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="{% url 'Foundation:campagne' %}">See More</a>
+                                        </div>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="position-relative">
+                <div class="d-flex justify-content-end">
+                    <button class="testimonial1-carousel-control-prev" type="button" data-bs-target="#causesCarousel" data-bs-slide="prev">
+                        <span class="testimonial1-carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="testimonial1-carousel-control-next" type="button" data-bs-target="#causesCarousel" data-bs-slide="next">
+                        <span class="testimonial1-carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Partners Start -->
+<div class="container-fluid volunteer py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <div class="row g-4 ms-3">
+                    <div class="col-lg-6">
+                        <div class="volunteer-img">
+                            <img data-src="{% static '/img/team1.jpg' %}" class="img-fluid w-100 lazyload" alt="Image">
+                            <div class="volunteer-title">
+                                <h5 class="mb-2 text-white">Blessed</h5>
+                                <p class="mb-0 text-white">Communicator</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="volunteer-img">
+                            <img data-src="{% static '/img/team3.jpg' %}" class="img-fluid w-100 lazyload" alt="Image">
+                            <div class="volunteer-title">
+                                <h5 class="mb-2 text-white">Blessed</h5>
+                                <p class="mb-0 text-white">Communicator</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <h5 class="text-uppercase" style="color:green">Become a Member?</h5>
+                <h1 class="mb-4">Join us to help those who are in need.</h1>
+                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> We are friendly to each other.</p>
+                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> If you join with us, we will give you free training.</p>
+                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> It's an opportunity to help poor environments.</p>
+                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> No goal requirements.</p>
+                <p class="text-dark mb-5"><i class="fa fa-check me-2" style="color:green"></i> Joining is totally free. We don't need any money from you.</p>
+                <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Foundation:adherer' %}">Join With Us</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Partners End -->
+
+
+{% endblock content %}
