@@ -20,6 +20,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,9 +30,9 @@ STATICFILES_DIRS = [
 SECRET_KEY = 'django-insecure-oa2+m*pbif1qojxw!6!ydi3!z($^qdqz(crf4+ogt=1jt*c)-$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
