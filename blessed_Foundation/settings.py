@@ -22,7 +22,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-CSRF_TRUSTED_ORIGINS = ['*']
+#CSRF_TRUSTED_ORIGINS = ['*']
 #CSRF_COOKIE_SECURE = True  # si tu es en HTTPS
 #SESSION_COOKIE_SECURE = True  # idem
 
