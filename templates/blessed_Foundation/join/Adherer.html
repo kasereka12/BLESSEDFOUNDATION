@@ -1,225 +1,334 @@
 {% extends "Base.html" %}
 
 {% block content %}
+<!-- Hero Section with Overlay -->
+<div class="container-fluid p-0">
+  <div class="position-relative">
+    <img src="../static/img/blessed.jpg" class="img-fluid w-100" style="height: 60vh; object-fit: cover;" alt="Foundation Banner">
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background: rgba(24, 29, 56, .7);">
+      <div class="text-center">
+        <h1 class="text-white display-3 mb-3 animated slideInDown">Become a Member</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item"><a class="text-white" href="{% url 'Foundation:index' %}">Home</a></li>
+            <li class="breadcrumb-item text-primary active" aria-current="page">Adherer</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Hero Section End -->
 
+<!-- Success Modal -->
+{% if messages %}
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="successModalLabel">Success</h5>
+        <a class="btn-close" href="{% url 'Foundation:index' %}" data-bs-dismiss="modal" aria-label="Close"></a>
+      </div>
+      <div class="modal-body py-4">
+        {% for message in messages %}
+          <div class="d-flex align-items-center">
+            <i class="bi bi-check-circle-fill text-success me-2 fs-4"></i>
+            <p class="mb-0">{{ message }}</p>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="modal-footer">
+        <a href="{% url 'Foundation:index' %}" class="btn btn-primary" data-bs-dismiss="modal">Close</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
 
-        <!-- Header Start -->
-        <div class="container-fluid bg-breadcrumb">
-            <div class="container text-center py-5" style="max-width: 900px;">
-                <h3 class="text-white display-3 mb-4">Adherer</h1>
-               <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a></li>
-                    
-                    <li class="breadcrumb-item active text-white">Adherer</li>
-                </ol>    
+<!-- About Section -->
+<div class="container py-5">
+  <div class="row g-5 align-items-center">
+    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+      <div class="position-relative overflow-hidden rounded shadow-lg">
+        <img src="../static/img/blessed.jpg" class="img-fluid w-100" alt="Foundation Image">
+        <div class="position-absolute start-0 bottom-0 w-100 py-3 px-4 bg-success">
+          <h4 class="text-white mb-0 ">Making a difference together</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+      <h2 class="mb-4">Join the Blessed Foundation Family</h2>
+      <p class="lead mb-4">Joining the Blessed Foundation means investing in a cause that can change millions of lives.</p>
+      <p class="mb-4">The foundation works to improve the quality of life for all mothers, children, and individuals living alone in rural areas, through:</p>
+      <div class="row g-3">
+        <div class="col-sm-6">
+          <div class="d-flex align-items-center mb-3">
+            <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
+              <i class="bi bi-house-heart text-white"></i>
             </div>
+            <h6 class="mb-0">Welcoming environments</h6>
+          </div>
         </div>
-        <!-- Header End -->
-        {% if messages %}
-        <div class="modal fade show" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="successModalLabel">Succès</h5>
-                        <a  class=" btn close" href="{% url 'Foundation:index' %}"  data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </a>
-                    </div>
-                    <div class="modal-body">
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
-                    </div>
-                    <div class="modal-footer">
-                        <a href="{% url 'Foundation:index' %}" class="btn btn-secondary" data-dismiss="modal">Fermer</a>
-                    </div>
-                </div>
+        <div class="col-sm-6">
+          <div class="d-flex align-items-center mb-3">
+            <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
+              <i class="bi bi-mortarboard text-white"></i>
             </div>
+            <h6 class="mb-0">Education & advice</h6>
+          </div>
         </div>
-    {% endif %}
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                  <img src="../static/img/blessed.jpg" class="w-75" alt="static">
-                </div>
-                <div class="col-md-6">
-                    <p class="p-5" style="font-size:20px;">     
-                      Joining the Blessed Foundation means investing in a cause that can change millions of lives. The foundation works to improve the quality of life for all mothers, children, and individuals living alone in rural areas, through welcoming environments, education and advice, 
-                      training and support for entrepreneurship, financial, health, and moral support, as well as advocacy</p>
-                </div>
+        <div class="col-sm-6">
+          <div class="d-flex align-items-center mb-3">
+            <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
+              <i class="bi bi-cash-coin text-white"></i>
             </div>
-            <h2 class="text-center">Fill in this membership form</h2>
-<form class="row g-3" method="post">
-    {% csrf_token %}
-    <div class="col-12">
-        <label for="type" class="form-label">Type of Person  <span class="required">*</span></label>
-        <select id="type" class="form-select" name="type" required>
-            <option selected>Choose one type before start</option>
-            <option value="individual">Individual</option>
-            <option value="morale">Legal Entity</option>
-        </select>
+            <h6 class="mb-0">Financial support</h6>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="d-flex align-items-center mb-3">
+            <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
+              <i class="bi bi-heart-pulse text-white"></i>
+            </div>
+            <h6 class="mb-0">Health & moral support</h6>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-12" id="individual" style="display: none;">
-        <div class="col-12">
-            <label for="nom" class="form-label">Last Name  <span class="required">*</span></label>
-            <input type="text" class="form-control" id="nom" name="nom" value=""  required>
-        </div>
-        <div class="col-12">
-            <label for="postnom" class="form-label">Middle Name  <span class="required">*</span></label>
-            <input type="text" class="form-control" id="postnom" value=""  name="postnom" required>
-        </div>
-        <div class="col-12">
-            <label for="prenom" class="form-label">First Name  <span class="required">*</span></label>
-            <input type="text" class="form-control" id="prenom" value=""  name="prenom" required>
-        </div>
-        <div class="col-12">
-            <label for="sexe" class="form-label">Gender  <span class="required">*</span></label>
-            <select id="sexe" class="form-select" name="sexe" value=""  required>
-                <option selected>Choose...</option>
-                <option value="Male">Male</option>
-                <option value="femme">Female</option>
-            </select>
-        </div>
-        <div class="col-12">
-            <label for="lieuNaissance" class="form-label">Place of Birth  <span class="required">*</span></label>
-            <input type="text" class="form-control" id="lieuNaissance" value=""  name="lieuNaissance" required>
-        </div>
-        <div class="col-12">
-            <label for="datenaissance" class="form-label">Date of Birth  <span class="required">*</span></label>
-            <input type="date" class="form-control"  id="datenaissance" name="datenaissance" required>
+  </div>
+</div>
+<!-- About Section End -->
 
+<!-- Form Section -->
+<div class="container-fluid bg-light py-5">
+  <div class="container">
+    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+      <h2 class="mb-5">Membership Application Form</h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-lg">
+          <div class="card-body p-5">
+            <form class="row g-4" method="post">
+              {% csrf_token %}
+              
+              <!-- Membership Type Selection -->
+              <div class="col-md-12">
+                <label for="type" class="form-label fw-bold">Type of Person <span class="text-danger">*</span></label>
+                <select id="type" class="form-select form-select-lg rounded-pill" name="type" required>
+                  <option selected>Choose one type before start</option>
+                  <option value="individual">Individual</option>
+                  <option value="morale">Legal Entity</option>
+                </select>
+              </div>
+              
+              <!-- Individual Section -->
+              <div class="col-12" id="individual" style="display: none;">
+                <div class="card border-0 bg-light">
+                  <div class="card-body p-4">
+                    <h5 class="card-title mb-4">Personal Information</h5>
+                    <div class="row g-3">
+                      <div class="col-md-4">
+                        <label for="nom" class="form-label">Last Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control rounded-pill" id="nom" name="nom" placeholder="Smith">
+                      </div>
+                      <div class="col-md-4">
+                        <label for="postnom" class="form-label">Middle Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control rounded-pill" id="postnom" name="postnom" placeholder="James">
+                      </div>
+                      <div class="col-md-4">
+                        <label for="prenom" class="form-label">First Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control rounded-pill" id="prenom" name="prenom" placeholder="John">
+                      </div>
+                      <div class="col-md-4">
+                        <label for="sexe" class="form-label">Gender <span class="text-danger">*</span></label>
+                        <select id="sexe" class="form-select rounded-pill" name="sexe">
+                          <option selected>Choose...</option>
+                          <option value="Male">Male</option>
+                          <option value="femme">Female</option>
+                        </select>
+                      </div>
+                      <div class="col-md-4">
+                        <label for="lieuNaissance" class="form-label">Place of Birth <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control rounded-pill" id="lieuNaissance" name="lieuNaissance" placeholder="New York">
+                      </div>
+                      <div class="col-md-4">
+                        <label for="datenaissance" class="form-label">Date of Birth <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control rounded-pill" id="datenaissance" name="datenaissance">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Common Information -->
+              <div class="col-12">
+                <div class="card border-0 bg-light mt-2">
+                  <div class="card-body p-4">
+                    <h5 class="card-title mb-4">Contact Information</h5>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Email <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                          <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="example@email.com">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputPhoneNumber" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                          <input type="tel" class="form-control" id="inputPhoneNumber" name="phone" placeholder="Enter your phone number">
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <label for="Address" class="form-label">Address <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                          <input type="text" class="form-control" id="Address" name="Address" placeholder="1234 Main St">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputCountry" class="form-label">Country <span class="text-danger">*</span></label>
+                        <select id="inputCountry" class="form-select" name="pays">
+                          <option selected>Choose...</option>
+                          <!-- Country options will be dynamically added -->
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputstate" class="form-label">State <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="inputstate" name="ville" placeholder="State/Province">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Legal Entity Section -->
+              <div id="physique" style="display: none;">
+                <div class="card border-0 bg-light mt-2">
+                  <div class="card-body p-4">
+                    <h5 class="card-title mb-4">Organization Information</h5>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label for="raisonSocialeField" class="form-label">Business Name</label>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="bi bi-building"></i></span>
+                          <input type="text" class="form-control" id="raisonSocialeField" name="businessname" placeholder="Company Name">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="formeJuridique" class="form-label">Legal Form</label>
+                        <div class="input-group">
+                          <span class="input-group-text"><i class="bi bi-file-earmark-text"></i></span>
+                          <input type="text" class="form-control" id="formeJuridique" name="legalform" placeholder="LLC, Corporation, etc.">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Submit Button -->
+              <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-lg rounded-pill px-5 py-3">
+                  <i class="bi bi-heart-fill me-2"></i> Join Now
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-       
+      </div>
     </div>
-    <div class="col-12">
-        <label for="inputEmail4" class="form-label">Email  <span class="required">*</span></label>
-        <input type="email" class="form-control" id="inputEmail4"  name="email">
-    </div>
-    <div class="col-12">
-        <label for="inputPhoneNumber" class="form-label">Phone Number  <span class="required">*</span></label>
-        <input type="tel" class="form-control" id="inputPhoneNumber" name="phone" placeholder="Enter your phone number" required>
-    </div> 
-    <div class="col-12">
-        <label for="Address" class="form-label">Address<span class="required">*</span></label>
-        <input type="text" class="form-control" id="Address" name="Address" required>
-    </div>
-    <div class="col-md-6">
-        <label for="inputCountry" class="form-label">Country <span class="required">*</span></label>
-        <select id="inputCountry" class="form-select" Name="pays" required>
-            <option selected>Choose...</option>
-            <!-- Country options will be dynamically added -->
-        </select>
-    </div>
-    <div class="col-md-6">
-        <label for="inputstate" class="form-label">State  <span class="required">*</span></label>
-        <input type="text" class="form-control" id="inputstate" name="ville" required>
-    </div>
-    
-    <div id="physique" style="display: none;">
-        <div class="col-12">
-            <label for="raisonSocialeField" class="form-label">Business Name </label>
-            <input type="text" class="form-control" id="raisonSocialeField" name="businessname">
-        </div>
-        <div class="col-12">
-            <label for="formeJuridique" class="form-label">Legal Form</label>
-            <input type="text" class="form-control" id="formeJuridique" name="legalform">
-        </div>
-    </div>
-    <div class="col-12 text-center">
-        <button type="submit" class="btn btn-primary">
-            <i class="bi bi-arrow-right-circle-fill"></i> Join
-        </button>
-    </div>
-    </form>
-
-        </div>
+  </div>
+</div>
+<!-- Form Section End -->
 
 {% block scripts %}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const typeSelect = document.getElementById('type');
-        const raisonSocialeField = document.getElementById('physique');
-        const individuals = document.getElementById('individual');
-        const nom = document.getElementById('nom');
-        const prenom = document.getElementById('prenom');
-        const postnom = document.getElementById('postnom');
-        const sexe = document.getElementById('sexe');
-        const lieuNaissance = document.getElementById('lieuNaissance');
-        const datenaissance = document.getElementById('datenaissance');
+  document.addEventListener('DOMContentLoaded', function () {
+    const typeSelect = document.getElementById('type');
+    const raisonSocialeField = document.getElementById('physique');
+    const individuals = document.getElementById('individual');
+    const nom = document.getElementById('nom');
+    const prenom = document.getElementById('prenom');
+    const postnom = document.getElementById('postnom');
+    const sexe = document.getElementById('sexe');
+    const lieuNaissance = document.getElementById('lieuNaissance');
+    const datenaissance = document.getElementById('datenaissance');
 
-        
-        typeSelect.addEventListener('change', function () {
-            const selectedType = typeSelect.value;
-            if (selectedType === 'morale') {
-                raisonSocialeField.style.display = 'block';
-                individuals.style.display = 'none'
-                nom.disabled = true;
-                prenom.disabled = true;
-                postnom.disabled = true;
-                sexe.disabled = true;
-                lieuNaissance.disabled = true;
-                datenaissance.disabled = true;
-               
-            } 
-            if(selectedType === 'individual') {
-                raisonSocialeField.style.display = 'none';
-                individuals.style.display = 'block'
-                nom.disabled = false;
-                prenom.disabled = false;
-                postnom.disabled = false;
-                sexe.disabled = false;
-                lieuNaissance.disabled = false;
-                datenaissance.disabled = false;
-            }
-        });
+    typeSelect.addEventListener('change', function () {
+      const selectedType = typeSelect.value;
+      if (selectedType === 'morale') {
+        raisonSocialeField.style.display = 'block';
+        individuals.style.display = 'none';
+        nom.disabled = true;
+        prenom.disabled = true;
+        postnom.disabled = true;
+        sexe.disabled = true;
+        lieuNaissance.disabled = true;
+        datenaissance.disabled = true;
+      }
+      if (selectedType === 'individual') {
+        raisonSocialeField.style.display = 'none';
+        individuals.style.display = 'block';
+        nom.disabled = false;
+        prenom.disabled = false;
+        postnom.disabled = false;
+        sexe.disabled = false;
+        lieuNaissance.disabled = false;
+        datenaissance.disabled = false;
+      }
     });
-    
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const selectCountry = document.getElementById('inputCountry');
-        const selectPhonePrefix = document.getElementById('phonePrefix');
-    
-        // Chargement des pays depuis l'API Restcountries
-        fetch('https://restcountries.com/v3.1/all')
-            .then(response => response.json())
-            .then(data => {
-                // Tri des pays par nom commun
-                data.sort((a, b) => {
-                    if (a.name.common < b.name.common) return -1;
-                    if (a.name.common > b.name.common) return 1;
-                    return 0;
-                });
-    
-                // Ajout des options pour les pays dans le select #inputCountry
-                data.forEach(country => {
-                    const option = document.createElement('option');
-                    option.textContent = country.name.common;
-                    selectCountry.appendChild(option);
-                });
-    
-               
-            })
-            .catch(error => {
-                console.error('Error fetching countries:', error);
-            });
-    });
+  });
 </script>
 
 <script>
-    $(document).ready(function () {
-        $('#successModal').modal('show');
+  document.addEventListener('DOMContentLoaded', function () {
+    const selectCountry = document.getElementById('inputCountry');
 
-        
+    // Load countries from Restcountries API
+    fetch('https://restcountries.com/v3.1/all')
+      .then(response => response.json())
+      .then(data => {
+        // Sort countries by common name
+        data.sort((a, b) => {
+          if (a.name.common < b.name.common) return -1;
+          if (a.name.common > b.name.common) return 1;
+          return 0;
+        });
+
+        // Add country options to select
+        data.forEach(country => {
+          const option = document.createElement('option');
+          option.textContent = country.name.common;
+          selectCountry.appendChild(option);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching countries:', error);
+      });
+  });
+</script>
+
+<script>
+  $(document).ready(function () {
+    $('#successModal').modal('show');
+    
+    // Add animation effects
+    const wow = new WOW({
+      boxClass: 'wow',
+      animateClass: 'animated',
+      offset: 0,
+      mobile: true,
+      live: true
     });
-
+    wow.init();
+  });
 </script>
 {% endblock %}
-
-
 
 {% endblock content %}

@@ -1,39 +1,292 @@
 {% extends "Base.html" %}
 
 {% block content %}
+<!-- Header with Overlay -->
+<div class="position-relative">
+  <!-- Background image with dark overlay -->
+  <div class="position-absolute w-100 h-100" style="background-image: url(../static/img/partenaire.jpg); background-size: cover; background-position: center; filter: brightness(0.5);"></div>
+  
+  <!-- Header content -->
+  <div class="position-relative py-5">
+    <div class="container py-5 text-center">
+      <h1 class="display-3 text-white fw-bold mb-4 animate__animated animate__fadeInDown">Become a Partner</h1>
+      <p class="fs-4 text-white mb-4 mx-auto animate__animated animate__fadeInUp" style="max-width: 700px;">Together, let's create lasting impact for rural mothers and their children</p>
+      
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="d-flex justify-content-center">
+        <ol class="breadcrumb bg-white bg-opacity-25 px-3 py-2 rounded-pill">
+          <li class="breadcrumb-item">
+            <a href="{% url 'Foundation:index' %}" class="text-green text-decoration-none">
+              <i class="bi bi-house-door me-1"></i>
+              Home
+            </a>
+          </li>
+          <li class="breadcrumb-item active text-black" aria-current="page">Become Partner</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
 
-        <!-- Header Start -->
-        <div class="container-fluid " style="background-image:url(../static/img/partenaire.jpg);background-size:cover;padding: 100px 0 0 0;" >
-            <div class="container text-center py-5" style="max-width: 900px;">
-                <h3 class="text-white display-3 mb-4">Partenaire</h1>
-                
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a></li>
-                    <li class="breadcrumb-item active text-white">Become partner</li>
-                </ol>    
+<!-- Introduction Section -->
+<section class="bg-white py-5">
+  <div class="container py-4">
+    <!-- Section header -->
+    <div class="text-center mb-5">
+      <span class="badge bg-success bg-opacity-25 text-white fs-6 fw-medium mb-3 px-3 py-2">
+        PARTNERSHIP
+      </span>
+      <h2 class="display-5 fw-bold mb-3">
+        Create Meaningful Social Impact
+      </h2>
+      <div class="mx-auto bg-success" style="width: 70px; height: 3px; margin-bottom: 1.5rem;"></div>
+      <p class="lead text-black mx-auto" style="max-width: 800px;">
+        A partnership with Blessed Foundation is an opportunity to combine social responsibility 
+        with your organizational strategy while supporting a cause that transforms lives.
+      </p>
+    </div>
+    
+    <!-- Introduction card -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-10">
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+          <div class="row g-0">
+            <div class="col-md-5 bg-success text-white p-4 p-lg-5">
+              <h2 class="fs-1 fw-bold mb-4">Why become a partner?</h2>
+              <p class="fs-5 mb-4">Join our mission and create positive social impact while strengthening your organization's reputation.</p>
+              <a href="#contact" class="btn btn-outline-light rounded-pill px-4 py-2 fw-medium d-inline-flex align-items-center">
+                Learn more
+                <i class="bi bi-arrow-right ms-2"></i>
+              </a>
             </div>
+            <div class="col-md-7 p-4 p-lg-5">
+              <h3 class="fs-2 fw-bold text-dark mb-4">Support rural mothers and children</h3>
+              <p class="text-black mb-4">Partnering with Blessed Foundation can benefit your organization in several ways:</p>
+              
+              <ul class="list-unstyled">
+                <li class="d-flex align-items-start mb-3">
+                  <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                  <span>Enhanced visibility and brand reputation</span>
+                </li>
+                <li class="d-flex align-items-start mb-3">
+                  <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                  <span>Opportunities for meaningful engagement</span>
+                </li>
+                <li class="d-flex align-items-start mb-3">
+                  <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                  <span>Customized partnership solutions</span>
+                </li>
+                <li class="d-flex align-items-start">
+                  <i class="bi bi-check-circle-fill text-success me-2 mt-1"></i>
+                  <span>Support for socio-professional integration of rural mothers and children</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <!-- Header End -->
-        <div class="container p-5" style="font-size: 20px;">
-            <h3 style="font-weight: bold;">Become a Partner</h3>
-        
-            <p><strong>Gather your employees around the cause of rural mothers</strong></p>
-        
-            <p>
-                Partnering with blessed foundation can benefit your organization in several ways. Create opportunities for increased employee collaboration, marketing and professional partnership, as well as customer engagement, all while supporting the socio-professional integration of rural mothers and children.
-        
-                We help businesses support our mission. Take the first step and contact our Corporate Engagement Service today! Email <span class="text-info">contact@blessedfoundation.org</span>.
-            </p>
-        
-            <p><strong>Gather your employees around the cause of rural mothers and children</strong></p>
-        
-            <p>
-                blessed foundation collaborates with companies to increase awareness and promote corporate citizenship among its audiences. We create customized packages based on target audience, goals, and budget of each company.
-        
-                Sponsorship can be a financial commitment or an in-kind donation, and can be event-based or annual. If your company wants to give and make a difference, please contact benite mukombo, General Coordinator. <span class="text-info">contact@blessedfoundation.org  / +1 2079556670</span>
-            </p>
+      </div>
+    </div>
+    
+    <!-- Benefits Section -->
+    <section class="mb-5 py-3">
+      <h2 class="display-6 fw-bold text-center mb-5">Partnership Benefits</h2>
+      
+      <div class="row justify-content-center g-4">
+        <!-- Benefit 1 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 hover-shadow transition-all">
+            <div class="card-body text-center p-4">
+              <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 80px; height: 80px;">
+                <i class="bi bi-globe fs-2 text-success"></i>
+              </div>
+              <h3 class="fs-4 fw-semibold mb-3">Global Impact</h3>
+              <p class="text-black">Contribute to meaningful change that improves lives in rural communities through sustainable programs.</p>
+            </div>
+            <div class="card-footer bg-success py-1 border-0"></div>
+          </div>
         </div>
         
-
-
+        <!-- Benefit 2 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 hover-shadow transition-all">
+            <div class="card-body text-center p-4">
+              <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 80px; height: 80px;">
+                <i class="bi bi-heart-fill fs-2 text-success"></i>
+              </div>
+              <h3 class="fs-4 fw-semibold mb-3">Social Responsibility</h3>
+              <p class="text-black">Demonstrate your commitment to social causes and align with the UN Sustainable Development Goals.</p>
+            </div>
+            <div class="card-footer bg-success py-1 border-0"></div>
+          </div>
+        </div>
+        
+        <!-- Benefit 3 -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm rounded-4 hover-shadow transition-all">
+            <div class="card-body text-center p-4">
+              <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 80px; height: 80px;">
+                <i class="bi bi-graph-up-arrow fs-2 text-success"></i>
+              </div>
+              <h3 class="fs-4 fw-semibold mb-3">Measurable Results</h3>
+              <p class="text-black">Receive regular impact reports showing how your support makes a tangible difference.</p>
+            </div>
+            <div class="card-footer bg-success py-1 border-0"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Collaboration Section -->
+    <section class="mb-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+            <div class="row g-0">
+              <div class="col-md-6 p-4 p-lg-5">
+                <h3 class="fs-2 fw-bold mb-4">Our Partnership Model</h3>
+                <p class="text-black mb-4">We offer flexible partnership opportunities tailored to your organization's goals and capacity:</p>
+                
+                <div class="d-flex mb-4">
+                  <div class="me-3">
+                    <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                      <span class="fw-bold text-success">1</span>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="text-black mb-0">Financial support for specific programs or general operations</p>
+                  </div>
+                </div>
+                
+                <div class="d-flex mb-4">
+                  <div class="me-3">
+                    <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                      <span class="fw-bold text-success">2</span>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="text-black mb-0">In-kind donations of goods or services</p>
+                  </div>
+                </div>
+                
+                <div class="d-flex">
+                  <div class="me-3">
+                    <div class="rounded-circle bg-success bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                      <span class="fw-bold text-success">3</span>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="text-black mb-0">Technical expertise and knowledge sharing</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div id="contact" class="col-md-6 bg-success p-4 p-lg-5 text-white">
+                <h3 class="fs-2 fw-bold mb-4">Contact Us Today</h3>
+                
+                <div class="mb-4">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="bg-white rounded-circle p-2 d-flex align-items-center justify-content-center me-3" style="width: 45px; height: 45px;">
+                      <i class="bi bi-envelope-fill fs-5 text-success"></i>
+                    </div>
+                    <div>
+                      <p class="fw-medium mb-0">Email</p>
+                      <p class="text-white-50 mb-0">contact@blessedfoundation.org</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="mb-4">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="bg-white rounded-circle p-2 d-flex align-items-center justify-content-center me-3" style="width: 45px; height: 45px;">
+                      <i class="bi bi-telephone-fill fs-5 text-success"></i>
+                    </div>
+                    <div>
+                      <p class="fw-medium mb-0">Phone</p>
+                      <p class="text-white-50 mb-0">+1 207-955-6670</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <div class="d-flex align-items-center">
+                    <div class="bg-white rounded-circle p-2 d-flex align-items-center justify-content-center me-3" style="width: 45px; height: 45px;">
+                      <i class="bi bi-person-fill fs-5 text-success"></i>
+                    </div>
+                    <div>
+                      <p class="fw-medium mb-0">Contact Person</p>
+                      <p class="text-white-50 mb-0">Benite Mukombo, General Coordinator</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="mb-5 py-3">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="display-6 fw-bold text-center mb-5">Frequently Asked Questions</h2>
+          
+          <div class="accordion accordion-flush" id="faqAccordion">
+            <!-- Question 1 -->
+            <div class="accordion-item border-0 mb-3 shadow-sm rounded-3">
+              <h3 class="accordion-header">
+                <button class="accordion-button fw-semibold rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  What types of partnerships do you offer?
+                </button>
+              </h3>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-black">
+                  We offer program sponsorships, general funding, in-kind donations, technical partnerships, and cause-related marketing opportunities.
+                </div>
+              </div>
+            </div>
+            
+            <!-- Question 2 -->
+            <div class="accordion-item border-0 mb-3 shadow-sm rounded-3">
+              <h3 class="accordion-header">
+                <button class="accordion-button fw-semibold collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  How do you measure impact?
+                </button>
+              </h3>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-black">
+                  We track quantitative metrics (number of beneficiaries, training sessions) and qualitative outcomes (success stories, community feedback) with regular reports to partners.
+                </div>
+              </div>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="accordion-item border-0 shadow-sm rounded-3">
+              <h3 class="accordion-header">
+                <button class="accordion-button fw-semibold collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  What is the minimum commitment period?
+                </button>
+              </h3>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-black">
+                  We're flexible - partnerships can range from one-time support to multi-year commitments, depending on your capacity and goals.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Final CTA -->
+    <section class="text-center mb-5 py-5 bg-light rounded-4">
+      <h3 class="fs-1 fw-bold mb-4">Ready to Make a Difference?</h3>
+      <p class="lead text-black mx-auto mb-4" style="max-width: 700px;">Join our network of committed partners and help transform rural communities.</p>
+      <a href="#contact" class="btn btn-success btn-lg rounded-pill px-5 py-3 fw-semibold d-inline-flex align-items-center">
+        Become a Partner Now
+        <i class="bi bi-arrow-right-circle-fill ms-2"></i>
+      </a>
+    </section>
+  </div>
+</section>
 {% endblock content %}

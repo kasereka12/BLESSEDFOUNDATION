@@ -1,90 +1,134 @@
 {% extends "Base.html" %}
 
 {% block content %}
-
-
-<!-- Header Start -->
-<div class="container-fluid" style="background-image:url(../static/img/stories.jpg);background-size:cover;padding: 100px 0 0 0;">
-    <div class="container text-center py-5" style="max-width: 900px;">
-        <h3 class="text-white display-3 mb-4">Tell Your Story</h3>
-        <ol class="breadcrumb justify-content-center mb-0">
-            <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a></li>
-            <li class="breadcrumb-item active text-white">Your Stories</li>
-        </ol>    
+<!-- Header Banner with Overlay -->
+<div class="position-relative">
+  <div class="bg-image position-absolute w-100 h-100" style="background-image: url(../static/img/stories.webp); background-size: cover; background-position: center; filter: brightness(0.7);"></div>
+  <div class="container py-5 position-relative">
+    <div class="row justify-content-center text-center py-5">
+      <div class="col-lg-8">
+        <h1 class="display-4 fw-bold text-white mb-4">Tell Your Story</h1>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-center">
+            <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" class="text-white">Home</a></li>
+            <li class="breadcrumb-item active text-white" aria-current="page">Your Stories</li>
+          </ol>
+        </nav>
+      </div>
     </div>
+  </div>
 </div>
-<!-- Header End -->
+
+<!-- Success Modal -->
 {% if messages %}
-<div class="modal fade show" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="successModalLabel">histoire</h5>
-                <a  class=" btn close" href="{% url 'Foundation:index' %}"  data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </a>
-            </div>
-            <div class="modal-body">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </div>
-            <div class="modal-footer">
-                <a href="{% url 'Foundation:index' %}" class="btn btn-secondary" data-dismiss="modal">Fermer</a>
-            </div>
-        </div>
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="successModalLabel">Histoire</h5>
+        <a class="btn-close btn-close-white" href="{% url 'Foundation:index' %}" data-bs-dismiss="modal" aria-label="Close"></a>
+      </div>
+      <div class="modal-body py-4">
+        {% for message in messages %}
+          <div class="alert alert-success mb-0">{{ message }}</div>
+        {% endfor %}
+      </div>
+      <div class="modal-footer">
+        <a href="{% url 'Foundation:index' %}" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</a>
+      </div>
     </div>
+  </div>
 </div>
 {% endif %}
-<div class="p-5" style="font-size:20px;">
-    <p>
-        Support the cause by sharing your experience. We will publish it on our website and social media to raise awareness about the challenges of single-parent education and also to promote your business if you have one. If you wish to make an anonymous testimony, click the button below.
-    </p>
 
+<!-- Introduction Section -->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow-sm mb-5">
+        <div class="card-body p-4 p-md-5">
+          <p class="fs-5 mb-4">
+            Support the cause by sharing your experience. We will publish it on our website and social media to raise awareness about the challenges of single-parent education and also to promote your business if you have one.
+          </p>
+          <div class="d-flex align-items-center">
+            <div class="bg-light p-3 rounded-circle me-3">
+              <i class="bi bi-shield-lock fs-4 text-success"></i>
+            </div>
+            <p class="mb-0">If you wish to make an anonymous testimony, simply indicate this in your message.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="container">
-  
 
-    <form class="row g-3" id="myForm" method="post">
-        {% csrf_token %}
-        <div class="col-md-6">
-            <label for="nom" class="form-label">Name <span class="required">*</span></label>
-            <input type="text" class="form-control" id="nom" Name="nom" required>
+<!-- Form Section -->
+<div class="container pb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card border-0 shadow">
+        <div class="card-header bg-success text-white p-4">
+          <h3 class="mb-0 text-white">Share Your Experience</h3>
         </div>
-        <div class="col-md-6">
-            <label for="prenom" class="form-label">First Name <span class="required">*</span></label>
-            <input type="text" class="form-control" id="prenom" Name="prenom" required>
+        <div class="card-body p-4 p-md-5">
+          <form class="row g-3" id="myForm" method="post">
+            {% csrf_token %}
+            
+            <div class="col-md-6">
+              <label for="nom" class="form-label fw-bold">Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-lg" id="nom" name="nom" required>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="prenom" class="form-label fw-bold">First Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control form-control-lg" id="prenom" name="prenom" required>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="tel" class="form-label fw-bold">Phone <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                <input type="tel" class="form-control form-control-lg" id="tel" name="telephone" required>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <label for="mail" class="form-label fw-bold">Email <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                <input type="email" class="form-control form-control-lg" id="mail" name="mail" required>
+              </div>
+            </div>
+            
+            <div class="col-12 mt-4">
+              <label for="raison" class="form-label fw-bold">Your Story <span class="text-danger">*</span></label>
+              <small class="d-block text-muted mb-2">(you will remain anonymous if requested)</small>
+              <textarea class="form-control form-control-lg" id="raison" rows="8" name="histoire" required></textarea>
+            </div>
+            
+            <div class="col-12 mt-4 text-center">
+              <button type="submit" class="btn btn-primary btn-lg px-5 py-3">
+                Send Your Story <i class="bi bi-arrow-right ms-2"></i>
+              </button>
+            </div>
+          </form>
         </div>
-        <div class="col-md-6">
-            <label for="tel" class="form-label">Phone <span class="required">*</span></label>
-            <input type="tel" class="form-control" id="tel" Name="telephone" required>
-        </div>
-        <div class="col-md-6">
-            <label for="mail" class="form-label">Email <span class="required">*</span></label>
-            <input type="email" class="form-control" id="mail" Name="mail" required>
-        </div>
-        <div class="col-12">
-            <label for="raison" class="form-label">Your Story <small>(you will remain anonymous)</small> <span class="required">*</span></label>
-            <textarea class="form-control" id="raison" rows="5" Name="histoire" required></textarea>
-        </div>
-        <div class="col-12 text-center">
-            <button type="submit" class="btn btn-primary">
-                <i class="bi bi-arrow-right-circle-fill"></i> Send
-            </button>
-        </div>
-    </form>
+      </div>
+    </div>
+  </div>
 </div>
+
 {% block scripts %}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $('#successModal').modal('show');
-
-        
-    });
+  $(document).ready(function () {
+    {% if messages %}
+      var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+      successModal.show();
+    {% endif %}
+  });
 </script>
 {% endblock %}
-      
 
 {% endblock content %}

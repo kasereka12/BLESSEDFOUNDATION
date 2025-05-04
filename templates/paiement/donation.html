@@ -1,74 +1,223 @@
 {% extends "Base.html" %}
 
 {% block content %}
-    <!-- Header Start -->
-    <div class="container-fluid" style="background-image:url(../../static/img/donation.jpg);background-size:cover;padding: 100px 0 0 0;" >
-        <div class="container text-center py-5" style="max-width: 900px;">
-            <h3 class="text-white display-3 mb-4">Donation</h1>
-            <p class="fs-5 text-white mb-4">Help today because tomorrow you may be the one who needs more helping!</p>
-            <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a></li>
-                <li class="breadcrumb-item active text-white">Donation</li>
-            </ol>    
+
+<!-- Header Start -->
+<div class="container-fluid bg-breadcrumb" style="background-image: url(../../static/img/donation.webp); background-size: cover; padding: 100px 0 0 0;">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h1 class="display-3 fw-bold mb-3">Make a Donation</h1>
+            <p class="fs-4 mb-4 text-white">Help today because tomorrow you may be the one who needs more helping!</p>
+        <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" class="text-white text-decoration-none">Home</a></li>
+            <li class="breadcrumb-item active text-success" aria-current="page">Donation</li>
+        </ol>    
+    </div>
+</div>
+
+<!-- Introduction Section -->
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-md-5">
+                    <h2 class="text-center mb-4">Your Support Makes a Difference</h2>
+                    <p class="lead text-center">
+                        Your support can improve the employability and quality of life for mothers, their children's education, 
+                        and advocacy for their rights. It will enable us to conduct more training, mentoring, support, and awareness 
+                        activities for these mothers, children, as well as the general public and authorities, to reduce the risks 
+                        of single-parent education failure and its social impact.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- Header End -->
+</div>
 
-    <div class="container">
-        <p class="p-3 justify-content-between">
-            Your support can improve the employability and quality of life for mothers, their children's education, and advocacy for their rights. It will enable us to conduct more training, mentoring, support, and awareness activities for these mothers, children, as well as the general public and authorities, to reduce the risks of single-parent education failure and its social impact.
-        </p>
-
-        <h4>DONATING IN KIND</h4>
-        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Computer and audio-visual equipment.</p>
-        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Office furniture.</p>
-        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Medical equipment.</p>
-        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Agricultural equipment.</p>
-        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Real estate (house, land).</p>
-        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Medications.</p>
-        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Clothing.</p>
-        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> A vehicle.</p>
-        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> A plot of land.</p>
-        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Life insurance.</p>
-        <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> School supplies.</p>
-      </div>             
-        <div class="text-center text-white m-3 p-5" style="background: rgba(37, 67, 54, 1);">
-            Contact us: +237 6 75 05 02 98 / 6 91 59 97 63 <br>
-            donner@fondationcoeurdemere.org 
+<!-- Online Donation Section -->
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-success text-white py-3">
+                    <h3 class="mb-0 text-center text-white">DONATE ONLINE</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-4">
+                        {% for mode in modes %}
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 border-0 shadow-sm transition-hover">
+                                <img src="{{mode.image.url}}" class="card-img-top" alt="{{ mode.nom }} donation">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title fw-bold">{{ mode.nom }}</h5>
+                                    
+                                    {% if mode.type_paiement == 'PAYPAL' %}
+                                    <p class="card-text">Donate securely using PayPal's protected payment service.</p>
+                                    <a href="{% url 'Paiement:paiement_home' %}?mode={{ mode.id }}" class="btn btn-primary btn-lg w-100">
+                                        <i class="fab fa-paypal me-2"></i>Donate via {{ mode.nom }}
+                                    </a>
+                                    
+                                    {% elif mode.type_paiement == 'CARTE' %}
+                                    <p class="card-text">Make a donation using your credit or debit card.</p>
+                                    <a href="#" class="btn btn-primary btn-lg w-100 disabled">
+                                        <i class="far fa-credit-card me-2"></i>Donate via {{ mode.nom }}
+                                    </a>
+                                    <div class="badge bg-warning text-dark mt-2">Coming Soon</div>
+                                    
+                                    {% else %}
+                                    <p class="card-text">Support our mission with a donation through {{ mode.nom }}.</p>
+                                    <a href="{% url 'Paiement:paiement_home' %}?mode={{ mode.id }}" class="btn btn-primary btn-lg w-100 text-white">
+                                        <i class="fas fa-hand-holding-heart me-2 text-white"></i>Donate Now
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="container">
-          <h4>DONATING ONLINE</h4>
-          <div class="container">
-              <div class="row">
-                  {% for mode in modes %}
-                  <div class="col-sm-6 col-lg-4 mb-4">
-                    <div class="card">
-                        <svg class="bd-placeholder-img card-img" width="100%" height="0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Card image" preserveAspectRatio="xMidYMid slice" focusable="false">
-                            <a href="#"><img src="{{mode.image.url}}" class="card-img-top img-fluid" alt=""></a>
-                        </svg>
-                        <div class="card-body">
-                            <h5 class="card-title">{{ mode.nom }}</h5>
-                            {% if mode.type_paiement == 'PAYPAL'  %}
-                            <p class="card-text">You can donate using PayPal by clicking the button below:</p>
-                            <a href="{% url 'Paiement:paiement_home' %}?mode={{ mode.id }}" class="btn btn-primary text-white">Donate via  {{ mode.nom }}</a>
-                            
-                            {% elif mode.type_paiement == 'CARTE'  %}
-                            <p class="card-text">You can donate using Credit card by clicking the button below:</p>
-                            <a href="#" class="btn btn-primary text-white disabled">Donate via  {{ mode.nom }}</a> <small class="text-alert text-uppercase">comming soon</small>
-                            
-                            {% else %}
-                            <a href="{% url 'Paiement:paiement_home' %}?mode={{ mode.id }}" class="btn btn-primary text-white">Donate </a>
-                            {% endif %}
+    </div>
+</div>
+
+<!-- Contact Banner -->
+<div class="container-fluid bg-success text-white py-5 mb-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 text-center text-lg-start">
+                <h3 class="mb-3">Need assistance with your donation?</h3>
+                <p class="mb-0 fs-5">
+                    <i class="fas fa-phone-alt me-2"></i> +237 6 75 05 02 98 / 6 91 59 97 63<br>
+                    <i class="fas fa-envelope me-2"></i> donner@fondationcoeurdemere.org
+                </p>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
+                <a href="mailto:donner@fondationcoeurdemere.org" class="btn btn-outline-light btn-lg px-4">
+                    <i class="fas fa-envelope me-2"></i>Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- In-Kind Donation Section -->
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-success text-white py-3">
+                    <h3 class="mb-0 text-center text-white">DONATE IN KIND</h3>
+                </div>
+                <div class="card-body p-4">
+                    <p class="lead text-center mb-4">
+                        We gladly accept the following items to support our mission and the mothers we serve.
+                    </p>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-3 fs-5"></i>
+                                    <span>Computer and audio-visual equipment</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-3 fs-5"></i>
+                                    <span>Office furniture</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-3 fs-5"></i>
+                                    <span>Medical equipment</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-3 fs-5"></i>
+                                    <span>Agricultural equipment</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-3 fs-5"></i>
+                                    <span>Real estate (house, land)</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-3 fs-5"></i>
+                                    <span>Medications</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-3 fs-5"></i>
+                                    <span>Clothing</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-3 fs-5"></i>
+                                    <span>A vehicle</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-3 fs-5"></i>
+                                    <span>A plot of land</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-3 fs-5"></i>
+                                    <span>Life insurance</span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success me-3 fs-5"></i>
+                                    <span>School supplies</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <a href="#" class="btn btn-outline-success btn-lg">
+                            <i class="fas fa-info-circle me-2"></i>Learn More About In-Kind Donations
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Impact Section -->
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card border-0 bg-light">
+                <div class="card-body p-4 p-md-5 text-center">
+                    <h2 class="mb-4">Your Donation Makes an Impact</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="p-3">
+                                <div class="display-4 text-primary mb-3">
+                                    <i class="fas fa-graduation-cap text-success"></i>
+                                </div>
+                                <h4>Education</h4>
+                                <p>Support children's education and give them opportunities for a brighter future.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3">
+                                <div class="display-4 text-primary mb-3">
+                                    <i class="fas fa-hands-helping text-success"></i>
+                                </div>
+                                <h4>Training</h4>
+                                <p>Help provide training for mothers to improve their employability and independence.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3">
+                                <div class="display-4 text-primary mb-3">
+                                    <i class="fas fa-heart text-success"></i>
+                                </div>
+                                <h4>Support</h4>
+                                <p>Your donations help us provide essential support services to families in need.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                  
-                  {% endfor %}
-                  
-              
-              </div>
-          </div>
-      </div>
-      
+            </div>
+        </div>
     </div>
+</div>
 {% endblock content %}
