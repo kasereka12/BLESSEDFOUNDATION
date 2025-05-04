@@ -35,7 +35,7 @@ def index(request):
             decouverte=connaissance
         )
        
-        if type in ['M_PESA', 'ORANGE_MONEY']:
+        if types in ['M_PESA', 'ORANGE_MONEY']:
             donate.save()
             return redirect('Paiement:donation')
         else:
