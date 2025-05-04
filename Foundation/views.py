@@ -21,7 +21,7 @@ def Action(request):
     return render(request,'blessed_Foundation/Foundation/champAction.html')
 
 def biograohie(request):
-    return render(request,'blessed_Foundation/Foundation/biographie.html')
+    return render(request,'blessed_Foundation/Foundation/Biographie.html')
 def Equipes(request):
     equipes = Equipe.objects.all()
     
@@ -114,7 +114,7 @@ def Adherer(request):
     return render(request,'blessed_Foundation/join/Adherer.html')
 def campagne(request):
     projets =  ProjetAvenir.objects.all()
-    return render(request,'blessed_Foundation/join/campagne.html',{'projets': projets})
+    return render(request,'blessed_Foundation/join/Campagne.html',{'projets': projets})
 def Ambassadeurs(request):
     if not request.user.is_authenticated:
         messages.error(request, "Vous devez être connecté pour accéder à cette page.")
