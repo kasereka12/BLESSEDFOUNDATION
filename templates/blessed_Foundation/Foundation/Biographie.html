@@ -1,68 +1,165 @@
 {% extends "Base.html" %}
-
+{% load static %}
 {% block content %}
 
-        <!-- Header Start -->
-        <div class="container-fluid " style="background-image:url(../static/img/benita3.jpg);background-size:cover;padding: 100px 0 0 0;" >
-            <div class="container text-center py-5" style="max-width: 900px;">
-                <h3 class="text-white display-3 mb-4">Benite's Biography</h1>
+<!-- Header Start -->
+<div class="container-fluid" style="background-image:url(../static/img/benita3.jpg); background-size:cover; background-position:center; padding: 100px 0 0 0;">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h3 class="text-white display-3 mb-4 fw-bold" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Benite's Biography</h3>
+        <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" class="text-white-50">Home</a></li>
+            <li class="breadcrumb-item active text-white">Biography</li>
+        </ol>    
+    </div>
+</div>
+<!-- Header End -->
 
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a></li>
-                    <li class="breadcrumb-item active text-white">Biography</li>
-                </ol>    
+<div class="container-fluid p-0">
+    <!-- Childhood & Education Section -->
+    <div class="row g-0">
+        <div class="col-lg-6 position-relative">
+            <div class="h-100" style="min-height: 320px;">
+                <img data-src="{% static 'img/benita0.webp' %}"
+                    data-srcset="{% static 'img/benita0.webp' %} 640w,
+                                {% static 'img/benita0.webp' %} 1024w,
+                                {% static 'img/benita0.webp' %} 1920w"
+                    style="height: 100%; width: 100%; object-fit: cover;"
+                    class="lazyload" 
+                    alt="Benite Mukombo childhood photo">
             </div>
         </div>
-        <!-- Header End -->
+        <div class="col-lg-6 d-flex align-items-center" style="background-color: #f8f9fa;">
+            <div class="py-5 px-4 px-md-5">
+                <div class="d-inline-block mb-3 position-relative">
+                    <span class="badge bg-primary rounded-pill mb-2">01</span>
+                    <h2 class="display-6 fw-bold mb-0">Childhood & Education</h2>
+                    <div class="position-relative mt-2">
+                        <div style="height: 3px; width: 60px; background-color: #0d6efd;"></div>
+                    </div>
+                </div>
+                <p class="lead">
+                    Benite Mukombo was born in Mbuji-Mayi on October 5th in the Democratic Republic of Congo. She grew up in Katanga, Lubumbashi, where she completed her secondary education in math and physics at Kazi-Bora.
+                </p>
+                <p>
+                    After obtaining her baccalaureate in 2016, she spent 3 years at the Higher Institute of Statistics studying management informatics.
+                    Passionate about aviation, she traveled to the United States to further her studies and become a pilot.
+                </p>
+            </div>
+        </div>
+    </div>
 
-		<div class="container-fluid">
-			<!-- About 1 -->
-			<div class="row color-bg" style="padding-left: none;">
-				<div class="col-md-6 nopadding features-intro-img">
-					<div class="about-image" style="background-image:url(../static/img/benita0.jpg)"></div><!-- about image 1 -->
-				</div>
-				<div class="col-md-6 about-text">
-					<h6>Childhood & Education</h6><!-- headline-->
-					<p>
-						Benite Mukombo was born in Mbuji-Mayi on October 5th in the Democratic Republic of Congo. She grew up in Katanga, Lubumbashi, where she completed her secondary education in math and physics at Kazi-Bora. After obtaining her baccalaureate in 2016, she spent 3 years at the Higher Institute of Statistics studying management informatics.
-						Passionate about aviation, she traveled to the United States to further her studies and become a pilot.
-					</p><br><!-- About Text 1 -->
-				</div>
-			</div>
-			<!-- About 2 -->
-			<div class="row">
-				<div class="col-md-6 about-text">
-					<h6>Journey</h6><!-- Headline -->
-					<p>
-						In 2022, she began writing her first book "FROM HATE TO LOVE," which chronicles her traumatic hellish experience and how she emerged from it. This was followed by her second book, "A WOMAN A QUEEN," where she discusses the characteristics and value of a queen.
-						On February 15, 2024, she expressed her passion for helping women through her movement "I AM A QUEEN," which aims to help women thrive and find their inner light, inspiring each other through love, kindness, happiness, and faith.
-						In December 2023, she made an excellent connection with LMCTV, which introduced her to the media world, an area she had never considered before. Today, being in the virtual world, she plans to venture into cinema to enlighten people through her films.
-						<strong>She is an entrepreneur, CEO, and founder of Blessed Foundation</strong>, which focuses on empowering women, supporting orphans and underprivileged children, and aiding widows and single mothers who bear sole responsibility for parenting by showing them the path to salvation through Jesus Christ.
-						Benite Mukombo is a Christian missionary with a mission to evangelize.
-						- Journalist at LMCTV
-						- Speaker and motivator
-					</p><br><!-- About Text 2 -->
-					<!-- read more button  -->				
-				</div>
-				<div class="col-md-6 nopadding features-intro-img">
-					<div class="about-image" style="background-image:url(../static/img/benita2.jpg)"></div><!-- about image 2 -->
-				</div>
-			</div>
-			<!-- About 3 -->
-			<div class="row color-bg">
-				<div class="col-md-6 nopadding features-intro-img">
-					<div class="about-image" style="background-image:url(../static/img/benita0.jpg);background-size:cover;"></div><!-- about image 3 -->
-				</div>
-				<div class="col-md-6 about-text">
-					<h6>Certifications</h6><!-- Headline-->
-					<p>
-						<p class="text-white"><i class="fa fa-check me-2" style="color:green"></i> Certificate in Project Management at Rice University, Texas</p>
-						<p class="text-white"><i class="fa fa-check me-2" style="color:green"></i> Certificate in Entrepreneurship at the University of Pennsylvania</p>
-						<p class="text-white"><i class="fa fa-check me-2" style="color:green"></i> Certificate in Leadership at the University of Michigan, USA</p>
-					</p><br><!-- About Text 3 -->
-					<!-- read more button  -->					
-				</div>
-			</div>
-		</div>
-		
+    <!-- Journey Section -->
+    <div class="row g-0">
+        <div class="col-lg-6 d-flex align-items-center order-lg-1 order-2">
+            <div class="py-5 px-4 px-md-5">
+                <div class="d-inline-block mb-3 position-relative">
+                    <span class="badge bg-success rounded-pill mb-2">02</span>
+                    <h2 class="display-6 fw-bold mb-0">Journey</h2>
+                    <div class="position-relative mt-2">
+                        <div style="height: 3px; width: 60px; background-color: #198754;"></div>
+                    </div>
+                </div>
+                <p>
+                    In 2022, she began writing her first book "FROM HATE TO LOVE," which chronicles her traumatic hellish experience and how she emerged from it. This was followed by her second book, "A WOMAN A QUEEN," where she discusses the characteristics and value of a queen.
+                </p>
+                <p>
+                    On February 15, 2024, she expressed her passion for helping women through her movement "I AM A QUEEN," which aims to help women thrive and find their inner light, inspiring each other through love, kindness, happiness, and faith.
+                </p>
+                <p>
+                    In December 2023, she made an excellent connection with LMCTV, which introduced her to the media world, an area she had never considered before. Today, being in the virtual world, she plans to venture into cinema to enlighten people through her films.
+                </p>
+                <p>
+                    <strong>She is an entrepreneur, CEO, and founder of Blessed Foundation</strong>, which focuses on empowering women, supporting orphans and underprivileged children, and aiding widows and single mothers who bear sole responsibility for parenting by showing them the path to salvation through Jesus Christ.
+                </p>
+                <p>
+                    Benite Mukombo is a Christian missionary with a mission to evangelize.
+                </p>
+                <div class="d-flex mt-4">
+                    <div class="me-4">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-2">
+                                <i class="fa fa-microphone text-success"></i>
+                            </div>
+                            <span>Journalist at LMCTV</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-2">
+                                <i class="fa fa-comment text-success"></i>
+                            </div>
+                            <span>Speaker and motivator</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 position-relative order-lg-2 order-1">
+            <div class="h-100" style="min-height: 400px;">
+                <img data-src="{% static 'img/benita2.webp' %}"
+                    data-srcset="{% static 'img/benita2.webp' %} 640w,
+                                {% static 'img/benita2.webp' %} 1024w,
+                                {% static 'img/benita2.webp' %} 1920w"
+                    style="height: 100%; width: 100%; object-fit: cover;"
+                    class="lazyload" 
+                    alt="Benite Mukombo professional photo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Certifications Section -->
+    <div class="row g-0">
+        <div class="col-lg-6 position-relative">
+            <div class="h-100" style="min-height: 400px;">
+                <img data-src="{% static 'img/benita0.webp' %}"
+                    data-srcset="{% static 'img/benita0.webp' %} 640w,
+                                {% static 'img/benita0.webp' %} 1024w,
+                                {% static 'img/benita0.webp' %} 1920w"
+                    style="height: 100%; width: 100%; object-fit: cover;"
+                    class="lazyload" 
+                    alt="Benite Mukombo certification photo">
+            </div>
+        </div>
+        <div class="col-lg-6 d-flex align-items-center" style="background-color: #212529; color: white;">
+            <div class="py-5 px-4 px-md-5">
+                <div class="d-inline-block mb-3 position-relative">
+                    <span class="badge bg-warning text-dark rounded-pill mb-2">03</span>
+                    <h2 class="display-6 fw-bold mb-0 text-white">Certifications</h2>
+                    <div class="position-relative mt-2">
+                        <div style="height: 3px; width: 60px; background-color: #ffc107;"></div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-success rounded-circle p-2 me-3">
+                            <i class="fa fa-check text-white"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-0 text-white">Project Management</h5>
+                            <p class="mb-0 text-white-50">Rice University, Texas</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-success rounded-circle p-2 me-3">
+                            <i class="fa fa-check text-white"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-0 text-white">Entrepreneurship</h5>
+                            <p class="mb-0 text-white-50">University of Pennsylvania</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="bg-success rounded-circle p-2 me-3">
+                            <i class="fa fa-check text-white"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-0 text-white">Leadership</h5>
+                            <p class="mb-0 text-white-50">University of Michigan, USA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

@@ -1,94 +1,175 @@
 {% extends "Base.html" %}
+{% load static %}
 
 {% block content %}
+<!-- Header Start -->
+<div class="container-fluid bg-breadcrumb">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h3 class="text-white display-3 mb-4">Fields of Action</h3>
+        <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a></li>
+            <li class="breadcrumb-item active text-white">Field of Action</li>
+        </ol>    
+    </div>
+</div>
 
-
-        <!-- Header Start -->
-        <div class="container-fluid bg-breadcrumb">
-            <div class="container text-center py-5" style="max-width: 900px;">
-                <h3 class="text-white display-3 mb-4">Fields of Action</h3>
-                <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="{% url 'Foundation:index' %}" >Home</a></li>
-                    <li class="breadcrumb-item active text-white">Field of Action</li>
-                </ol>    
+<!-- Fields of Action Content -->
+<div class="container py-5">
+    <!-- Education Section -->
+    <div class="row align-items-center mb-5 py-3">
+        <div class="col-lg-6 mb-4 mb-lg-0 order-lg-1">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <img data-src="{% static 'img/service-1.webp' %}"
+                    data-srcset="{% static 'img/service-1.webp' %} 640w,
+                               {% static 'img/service-1.webp' %} 1024w,
+                               {% static 'img/service-1.webp' %} 1920w"
+                    style="max-height: 350px; object-fit: cover; width: 100%;"
+                    class="img-fluid lazyload" 
+                    alt="Education initiatives">
             </div>
         </div>
-        
-        <div class="container-fluid about py-5">
-            <div class="container">
-                <div class="row g-4 mb-5">
-                    <div class="col-6">
-                        <img src="../static/img/service-1.jpg" class="img-fluid w-100 h-50" alt="Image">
-                    </div>
-                    <div class="col-6">
-                        <p class="text-dark"><strong>Education</strong> is one of the most important investments we can make to ensure that every girl and boy benefits from the quality education needed to unlock their potential and secure their future.</p>
-                        <div class="row">
-                            <div class="col-md-6 themed-grid-col">
-                                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> cultural activities</p>
-                                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> educational meetings</p>
-                            </div>
-                            <div class="col-md-6 themed-grid-col">
-                                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> sponsorship</p>
-                                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> schooling</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-4 mb-5">
-                    <div class="col-6">
-                        <p class="text-dark">
-                            <strong>Wellbeing & Health</strong> 
-        
-                            When cultural practices respect the diversity of flora and fauna, agricultural activity significantly contributes to cultivated biodiversity through the multiplicity of its crops and the creation of specific habitats.
-                            Purchase of materials enabling and supporting agriculture such as:
-                        </p>
-                        <div class="row p-3">
-                            <div class="col-md-6 themed-grid-col">
-                                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> Awareness campaigns</p>
-                                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> screening campaigns.</p>
-                            </div>
-                            <div class="col-md-6 themed-grid-col">
-                                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> support in health monitoring,</p>
-                                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> etc.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="h-100">
-                            <img src="../static/img/bien&etre.jpg" class="img-fluid w-100 h-50" alt="Image">
-                        </div>
-                    </div>
-                </div>
+        <div class="col-lg-6 order-lg-0">
+            <div class="ps-lg-4">
+                <span class="badge bg-primary rounded-pill mb-2">01</span>
+                <h2 class="display-6 fw-bold mb-3">Education</h2>
+                <p class="lead mb-4">Education is one of the most important investments we can make to ensure that every girl and boy benefits from the quality education needed to unlock their potential and secure their future.</p>
                 <div class="row g-4">
-                    <div class="col-6">
-                        <div class="h-100">
-                            <img src="../static/img/service.jpg" class="img-fluid w-100 h-50" alt="Image">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-3">
+                                <i class="fa fa-check text-success"></i>
+                            </div>
+                            <span>Cultural activities</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-3">
+                                <i class="fa fa-check text-success"></i>
+                            </div>
+                            <span>Educational meetings</span>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <p class="text-dark">
-                            <strong>AGRICULTURE</strong> 
-        
-                            When cultural practices respect the diversity of flora and fauna, agricultural activity significantly contributes to cultivated biodiversity through the multiplicity of its crops and the creation of specific habitats.
-                            Purchase of materials enabling and supporting agriculture such as fertilizers, hoes, seeds, support and assistance etc...
-                        </p>
-                        <div class="row">
-                            <div class="col-md-6 themed-grid-col">
-                                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> fertilizers</p>
-                                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> hoes.</p>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-3">
+                                <i class="fa fa-check text-success"></i>
                             </div>
-                            <div class="col-md-6 themed-grid-col">
-                                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> seeds</p>
-                                <p class="text-dark"><i class="fa fa-check me-2" style="color:green"></i> etc.</p>
+                            <span>Sponsorship</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-3">
+                                <i class="fa fa-check text-success"></i>
                             </div>
+                            <span>Schooling</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- About End -->
+    </div>
 
+    <!-- Wellbeing & Health Section -->
+    <div class="row align-items-center mb-5 py-3">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="pe-lg-4">
+                <span class="badge bg-info rounded-pill mb-2">02</span>
+                <h2 class="display-6 fw-bold mb-3">Wellbeing & Health</h2>
+                <p class="lead mb-4">When cultural practices respect the diversity of flora and fauna, agricultural activity significantly contributes to cultivated biodiversity through the multiplicity of its crops and the creation of specific habitats.</p>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-3">
+                                <i class="fa fa-check text-success"></i>
+                            </div>
+                            <span>Awareness campaigns</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-3">
+                                <i class="fa fa-check text-success"></i>
+                            </div>
+                            <span>Screening campaigns</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-3">
+                                <i class="fa fa-check text-success"></i>
+                            </div>
+                            <span>Health monitoring</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-3">
+                                <i class="fa fa-check text-success"></i>
+                            </div>
+                            <span>Medical support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <img data-src="{% static 'img/bien&etre.webp' %}"
+                    data-srcset="{% static 'img/bien&etre.webp' %} 640w,
+                               {% static 'img/bien&etre.webp' %} 1024w,
+                               {% static 'img/bien&etre.webp' %} 1920w"
+                    style="max-height: 350px; object-fit: cover; width: 100%;"
+                    class="img-fluid lazyload" 
+                    alt="Health and wellbeing initiatives">
+            </div>
+        </div>
+    </div>
 
-
+    <!-- Agriculture Section -->
+    <div class="row align-items-center py-3">
+        <div class="col-lg-6 mb-4 mb-lg-0 order-lg-1">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <img data-src="{% static 'img/service.webp' %}"
+                    data-srcset="{% static 'img/service.webp' %} 640w,
+                               {% static 'img/service.webp' %} 1024w,
+                               {% static 'img/service.webp' %} 1920w"
+                    style="max-height: 350px; object-fit: cover; width: 100%;"
+                    class="img-fluid lazyload" 
+                    alt="Agricultural initiatives">
+            </div>
+        </div>
+        <div class="col-lg-6 order-lg-0">
+            <div class="ps-lg-4">
+                <span class="badge bg-warning text-dark rounded-pill mb-2">03</span>
+                <h2 class="display-6 fw-bold mb-3">Agriculture</h2>
+                <p class="lead mb-4">When cultural practices respect the diversity of flora and fauna, agricultural activity significantly contributes to cultivated biodiversity through the multiplicity of its crops and the creation of specific habitats.</p>
+                <p>Purchase of materials enabling and supporting agriculture:</p>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-3">
+                                <i class="fa fa-check text-success"></i>
+                            </div>
+                            <span>Fertilizers</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-3">
+                                <i class="fa fa-check text-success"></i>
+                            </div>
+                            <span>Hoes</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-3">
+                                <i class="fa fa-check text-success"></i>
+                            </div>
+                            <span>Seeds</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-success bg-opacity-25 rounded-circle p-2 me-3">
+                                <i class="fa fa-check text-success"></i>
+                            </div>
+                            <span>Support & assistance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

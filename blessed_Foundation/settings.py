@@ -25,7 +25,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 CSRF_TRUSTED_ORIGINS = ['https://web-production-e9cc.up.railway.app']
 CSRF_COOKIE_SECURE = True  # si tu es en HTTPS
 SESSION_COOKIE_SECURE = True  # idem
-
+# settings.py
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -66,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
 ]
 
 ROOT_URLCONF = 'blessed_Foundation.urls'
@@ -82,12 +84,13 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            
         },
     },
 ]
 
 WSGI_APPLICATION = 'blessed_Foundation.wsgi.application'
-
+WHITENOISE_MAX_AGE = 31536000  # 1 an en secondes
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -109,7 +112,10 @@ WSGI_APPLICATION = 'blessed_Foundation.wsgi.application'
  #   }
 #}
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    'default': {
+        **dj_database_url.config(default=os.environ.get('DATABASE_URL')),
+        'CONN_MAX_AGE': 600,  # Connection persistante
+    }
 }
 
 

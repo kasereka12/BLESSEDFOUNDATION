@@ -2,374 +2,470 @@
 {% load static %}
 
 {% block content %}
-
-     
-        
-       <!-- Carousel Start -->
-    <div class="container-fluid carousel-header vh-100 px-0 position-relative">
-        <!-- Contenu texte devant le carousel -->
-        <div class="position-absolute top-50 start-50 translate-middle text-center text-white" style="z-index: 1;">
-            <div class="p-3" style="max-width: 900px;">
-             
-                <h1 class="display-1 text-capitalize mb-4 font-weight-bold" style="color: rgba(37, 67, 54, 1); font-size: 3rem;">THE BLESSED FOUNDATION</h1>
-                <div class="d-flex align-items-center justify-content-center">
-                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4 px-md-5" href="{% url 'Paiement:donation' %}">Donate</a>
-
-                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4 px-md-5 ms-2" href="{% url 'Foundation:adherer' %}">Join With Us</a>
-                </div>
+    <!-- Hero Section Start -->
+<div class="hero-section position-relative vh-100">
+    <!-- Overlay Text -->
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="z-index: 2; background-color: rgba(0, 0, 0, 0.4);">
+        <div class="text-center px-4">
+            <h1 class="display-2 fw-bold text-white mb-4 animate__animated animate__fadeInDown">THE BLESSED FOUNDATION</h1>
+            <p class="lead text-white mb-5 animate__animated animate__fadeInUp">Supporting orphans, widows, and disadvantaged children since 2019</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a class="btn btn-lg py-3 px-5 animate__animated animate__fadeInLeft" href="{% url 'Paiement:donation' %}" style="background-color: #254336; color: white; border-radius: 30px;">
+                    <i class="fas fa-heart me-2"></i>Donate Now
+                </a>
+                <a class="btn btn-lg py-3 px-5 animate__animated animate__fadeInRight" href="{% url 'Foundation:adherer' %}" style="background-color: white; color: #254336; border-radius: 30px;">
+                    <i class="fas fa-users me-2"></i>Join With Us
+                </a>
             </div>
         </div>
+    </div>
     
-        <!-- Carousel -->
-        <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel" style="z-index: 0;">
-            <ol class="carousel-indicators">
-                <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active"></li>
-                
-                
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <!-- Image for Large Screens -->
-                    <img data-src="{% static "/img/home.jpg" %}" class="img-fluid d-none d-lg-block lazyload" alt="Image" style="width: 100%; height:auto;">
-
-                    <!-- Image for Small and Medium Screens (without specific styles) -->
-                    <img data-src="{% static "/img/home.jpg" %}" class="img-fluid d-block d-lg-none lazyload" alt="Image">
-                </div>
-                
-                
+    <!-- Background Image Carousel -->
+    <div id="heroCarousel" class="carousel slide carousel-fade position-absolute top-0 start-0 w-100 h-100" data-bs-ride="carousel" style="z-index: 1;">
+        <div class="carousel-inner h-100">
+            <div class="carousel-item active h-100">
+                <img data-src="{% static 'img/home.webp' %}"
+                     data-srcset="{% static 'img/home.webp' %} 640w,
+                                 {% static 'img/home.webp' %} 1024w,
+                                 {% static 'img/home.webp' %} 1920w"
+                     sizes="100vw"
+                     class="img-fluid w-100 h-100 lazyload object-fit-cover" 
+                     alt="Blessed Foundation Hero Image">
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
     </div>
+</div>
+<!-- Hero Section End -->
 
-    <div class="container-fluid" style="background: url(../static/img/SL.jpg); background-size:cover;">
-       <div class="container">
-        <div class="p-5 mb-4  rounded-3">
-            <div class="container-fluid py-0">
-              <p class="col-md-12 fs-4 text-white text-uppercase font-weight-bold">
-                Blessed foundation was created in democratic republic of Congo in 2019 to support orphans, widows, disadvantaged children and women who take sole parental responsibilities 
-                 
-            </p>
-            <hr class="my-4 bg-white" style="width: 150px;">
+<!-- Mission Statement -->
+<div class="container-fluid py-5" style="background: url({% static 'img/SL.webp' %}); background-size: cover; background-attachment: fixed;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="p-5 bg-white bg-opacity-25 rounded-4 shadow-lg text-center">
+                    <h2 class="display-5 fw-bold text-black mb-4">Our Mission</h2>
+                    <p class="fs-4 text-black mb-4">
+                        Blessed foundation was created in democratic republic of Congo in 2019 to support orphans, widows, disadvantaged children and women who take sole parental responsibilities
+                    </p>
+                    <hr class="mx-auto my-4 bg-white opacity-75" style="width: 100px; height: 3px;">
+                </div>
+            </div>
         </div>
-          </div>
-         
-          <div class="row align-items-md-stretch">
+        
+        <div class="row mt-5 g-4">
             <div class="col-md-6">
-              <div  class="h-100 p-5 text-white  rounded-3">
-                <h1 class="text-white text-uppercase" >Help family</h1>
-                <figure class="mb-0">
-                    <blockquote class="blockquote font-weight-bold" style="color: rgba(37, 67, 54, 1)">
-                      <p style="font-weight:bold; font-size:25px;">Family means no one gets left behind or forgotten</p>
+                <div class="h-100 p-5 rounded-4 shadow-lg" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+                    <h2 class="text-white display-6 mb-4">Help Family</h2>
+                    <blockquote class="blockquote">
+                        <p class="fs-4 fw-bold mb-3" style="color: rgba(255, 255, 255, 0.9);">"Family means no one gets left behind or forgotten"</p>
+                        <footer class="blockquote-footer text-white-50">David Ogden Stiers</footer>
                     </blockquote>
-                    <figcaption class="blockquote-footer mb-0 text-muted">
-                        David Ogden Stiers 
-                    </figcaption>
-                  </figure>
-                <div class="donation-btn d-flex align-items-center justify-content-start p-5">
-                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Paiement:donation' %}">Donate !</a>
+                    <div class="mt-5">
+                        <a class="btn btn-lg px-5 py-3" href="{% url 'Paiement:donation' %}" style="background-color: #254336; color: white; border-radius: 30px;">
+                            <i class="fas fa-hand-holding-heart me-2"></i>Donate Now
+                        </a>
+                    </div>
                 </div>
-              </div>
             </div>
             <div class="col-md-6">
-                <div class="card border-green">
-                    <div class="card-body">
-                        <h5 class="card-title" style="color: green">Sponsor a Child</h5>
-                        <p class="card-text">Support underprivileged children through educational opportunities and holistic development programs.</p>
-                        <a href="{% url 'Foundation:partenaire' %}" class="btn btn-primary text-white">Become a Sponsor</a>
+                <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="card-body p-5" style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));">
+                        <h3 class="card-title mb-4 fw-bold" style="color: #254336;">Sponsor a Child</h3>
+                        <p class="card-text fs-5 mb-5">Support underprivileged children through educational opportunities and holistic development programs. Your sponsorship can change a life forever.</p>
+                        <a href="{% url 'Foundation:partenaire' %}" class="btn btn-lg px-5 py-3" style="background-color: #254336; color: white; border-radius: 30px;">
+                            <i class="fas fa-child me-2"></i>Become a Sponsor
+                        </a>
                     </div>
-                </div>
-                
-                       
-            </div>
-          </div>
-       </div>   
-    </div>
-
-
-
-
-        <!-- Services Start -->
-        <div class="container-fluid service py-5 bg-light">
-            <div class="container py-5">
-                <div class="text-center mx-auto pb-5" style="max-width: 800px;">
-                    <h5 class="text-uppercase" style="color : green">Nos Axes d'action</h5>
-                    <h1 class="mb-0">Building a Sustainable Future</h1>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class=" p-4">
-                            <div class="service-item">
-                                <img data-src="{% static 'img/service-1.jpg' %}" class="img-fluid w-100 lazyload" alt="Image">
-                                <div class="service-link">
-                                    <a href="#" class="h4 mb-0">Education</a>
-                                </div>
-                            </div>
-                            <p class="my-4 ">
-                                Education is one of the most crucial investments we can make to ensure that every 
-                                girl and boy receives the quality education needed to unlock their potential and secure their future.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class=" p-4">
-                            <div class="service-item">
-                                <img data-src="{% static "/img/service.jpg" %}" class="img-fluid w-100 lazyload" alt="Image">
-                                <div class="service-link">
-                                    <a href="#" class="h4 mb-0">AGRICULTURE</a>
-                                </div>
-                            </div>
-                            <p class="my-4 ">
-                                When agricultural practices respect the diversity of flora and fauna, farming significantly contributes 
-                                to cultivated biodiversity through a variety of crops and the creation of specific habitats.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class=" p-4">
-                            <div class="service-item">
-                                <img data-src="{% static "/img/bien&etre.jpg" %}" class="img-fluid w-100 lazyload" alt="Image">
-                                <div class="service-link">
-                                    <a href="#" class="h4 mb-0">well-being and health</a>
-                                </div>
-                            </div>
-                            <p class="my-4 ">
-                                Awareness raising, screening campaigns, support in health monitoring, “Queen’s Holiday” concept</p>
-                        </div>
-                               
-                    </div>
-                   
-                       
-                
-                     
-                 
-                    
-            
-                    <div class="col-12">
-                        <div class="d-flex align-items-center justify-content-center">
-                            <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Foundation:Action' %}">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-        <!-- Services End -->
-
-
-        <!-- Donation Start -->
-        <div class="container-fluid donation py-5">
-            <div class="container py-5">
-                <div class="text-center mx-auto pb-5" style="max-width: 800px;">
-                    <h5 class="text-uppercase" style="color : green">Donation</h5>
-                    <h1 class="mb-0">Your money will save someone</h1>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-4">
-                        <div class="donation-item">
-                            <img data-src="{% static "/img/donation-1.jpg" %}" class="img-fluid w-100 lazyload" alt="Image">
-                            <div class="donation-content d-flex flex-column">
-                                <h5 class="text-uppercase  mb-4" style="color:green">education</h5>
-                                <a href="{% url 'Paiement:donation' %}" class="btn-hover-color display-6 text-white">Help Us More</a>
-                                <h4 class="text-white mb-4">under privileged children</h4>
-                                <p class="text-white mb-4">Our foundation is dedicated to providing educational opportunities and support to underprivileged children, empowering them to build a brighter future.
-                                </p>
-                                <div class="donation-btn d-flex align-items-center justify-content-start">
-                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Paiement:donation' %}">Donate !</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="donation-item">
-                            <img data-src="{% static "/img/service-2.jpg" %}" class="img-fluid w-100 lazyload" alt="Image">
-                            <div class="donation-content d-flex flex-column">
-                                <h5 class="text-uppercase  mb-4" style="color:green">Family</h5>
-                                <a href="{% url 'Paiement:donation' %}" class="btn-hover-color display-6 text-white">Help Us More</a>
-                                <h4 class="text-white mb-4">Supporting Single Mothers</h4>
-                                <p class="text-white mb-4">
-                                    to support single mothers by providing resources, education, and opportunities for them to thrive despite challenges.
-                                </p>
-                                <div class="donation-btn d-flex align-items-center justify-content-start">
-                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Paiement:donation' %}">Donate !</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="donation-item">
-                            <img data-src="{% static "/img/donation-3.jpg" %}" class="img-fluid w-100 lazyload" alt="Image">
-                            <div class="donation-content d-flex flex-column">
-                                <h5 class="text-uppercase mb-4" style="color:green">creativity</h5>
-                                <a href="{% url 'Paiement:donation' %}" class="btn-hover-color display-6 text-white">Help Us More</a>
-                                <h4 class="text-white mb-4">encourage creativity and social reintegration   </h4>
-                                <p class="text-white mb-4">
-                                    we offer all young people a capital of experiences, assets and relationships to pursue by all means   
-                                </p>
-                                    <div class="donation-btn d-flex align-items-center justify-content-start">
-                                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Paiement:donation' %}">Donate !</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="container">
-                            <div class="mt-5 p-5 rounded" style="background: rgba(37, 67, 54, 1);">
-                                <div class="row justify-content-center align-items-center">
-                                    <div class="col-lg-7">
-                                        <span class="text-color">Blessed Foundation</span>
-                                        <h2 class="mt-2 text-white">Support the poor</h2>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <!-- Ajout de la classe 'btn-lg' pour agrandir le bouton -->
-                                        <a href="{% url 'Paiement:donation' %}" class="btn btn-primary btn-round-full float-lg-right float-md-right float-sm-right btn-lg">Donate</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
+                </div>       
             </div>
         </div>
-        <!-- Donation End -->
+    </div>   
+</div>
 
-<!-- Counter Start -->
-<div class="container-fluid counter py-5" style="background: linear-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, 0.4)), url(img/volunteers-bg.jpg) center center; background-size: cover;">
+<!-- Our Focus Areas -->
+<div class="container-fluid py-5 bg-light">
     <div class="container py-5">
-        <div class="text-center mx-auto pb-5" style="max-width: 800px;">
-            <h5 class="text-uppercase" style="color:green">Achievements</h5>
+        <div class="text-center mb-5">
+            <span class="badge rounded-pill mb-2 px-3 py-2" style="background-color: rgba(37, 67, 54, 0.1); color: #254336;">OUR FOCUS</span>
+            <h2 class="display-5 fw-bold mb-4" style="color: #254336;">Building a Sustainable Future</h2>
+            <div class="divider-custom mx-auto"></div>
         </div>
+        
         <div class="row g-4">
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="counter-item text-center border p-5">
-                    <i class="fas fa-thumbs-up fa-4x text-white"></i>
-                    <h3 class="text-white my-4">Payment of school fees</h3>
-                    <div class="counter-counting">
-                        <span class="fs-2 fw-bold" style="color:green" data-toggle="counter-up">500</span>
-                        <span class="h1 fw-bold" style="color:green">+</span>
+            <!-- Education Card -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-scale">
+                    <img data-src="{% static 'img/service-1.webp' %}" 
+                         data-srcset="{% static 'img/service-1.webp' %} 640w,
+                                     {% static 'img/service-1.webp' %} 1024w,
+                                     {% static 'img/service-1.webp' %} 1920w"
+                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                         class="img-fluid lazyload" 
+                         alt="Education Program">
+                    <div class="card-body p-4">
+                        <h3 class="card-title h4 mb-3" style="color: #254336;">Education</h3>
+                        <p class="card-text">
+                            Education is one of the most crucial investments we can make to ensure that every 
+                            girl and boy receives the quality education needed to unlock their potential and secure their future.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 p-4">
+                        <a href="#" class="text-decoration-none" style="color: #254336;">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="counter-item text-center border p-5">
-                    <i class="fas fa-file-invoice-dollar fa-4x text-white"></i>
-                    <h3 class="text-white my-4">Funds Collected</h3>
-                    <div class="counter-counting text-center border-white w-100" style="border-style: dotted; font-size: 30px;">
-                        <span class=" fs-2 fw-bold" style="color:green" data-toggle="counter-up">653</span>
-                        <span class="h1 fw-bold" style="color:green">$</span>
+            
+            <!-- Agriculture Card -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-scale">
+                    <img data-src="{% static 'img/service.webp' %}"
+                         data-srcset="{% static 'img/service.webp' %} 640w,
+                                     {% static 'img/service.webp' %} 1024w,
+                                     {% static 'img/service.webp' %} 1920w"
+                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                         class="img-fluid lazyload" 
+                         alt="Agriculture Program">
+                    <div class="card-body p-4">
+                        <h3 class="card-title h4 mb-3" style="color: #254336;">Agriculture</h3>
+                        <p class="card-text">
+                            When agricultural practices respect the diversity of flora and fauna, farming significantly contributes 
+                            to cultivated biodiversity through a variety of crops and the creation of specific habitats.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 p-4">
+                        <a href="#" class="text-decoration-none" style="color: #254336;">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="counter-item text-center border p-5">
-                    <i class="fas fa-user fa-4x text-white"></i>
-                    <h3 class="text-white my-4">Member</h3>
-                    <div class="counter-counting text-center border-white w-100" style="border-style: dotted; font-size: 30px;">
-                        <span class=" fs-2 fw-bold" style="color:green" data-toggle="counter-up">60</span>
-                        <span class="h1 fw-bold" style="color:green">+</span>
+            
+            <!-- Health Card -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-scale">
+                    <img data-src="{% static 'img/bien&etre.webp' %}"
+                         data-srcset="{% static 'img/bien&etre.webp' %} 640w,
+                                     {% static 'img/bien&etre.webp' %} 1024w,
+                                     {% static 'img/bien&etre.webp' %} 1920w"
+                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                         class="img-fluid lazyload" 
+                         alt="Health and Well-being Program">
+                    <div class="card-body p-4">
+                        <h3 class="card-title h4 mb-3" style="color: #254336;">Well-being and Health</h3>
+                        <p class="card-text">
+                            Awareness raising, screening campaigns, support in health monitoring, "Queen's Holiday" concept
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 p-4">
+                        <a href="#" class="text-decoration-none" style="color: #254336;">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
-                <div class="counter-item text-center border p-5">
-                    <i class="fas fa-heart fa-4x text-white"></i>
-                    <h3 class="text-white my-4">Days of Help</h3>
-                    <div class="counter-counting text-center border-white w-100" style="border-style: dotted; font-size: 30px;">
-                        <span class=" fs-2 fw-bold" style="color:green" data-toggle="counter-up">487</span>
-                        <span class="h1 fw-bold" style="color:green">+</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="d-flex align-items-center justify-content-center">
-                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="{% url 'Foundation:adherer' %}">Join With Us</a>
-                </div>
-            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a class="btn btn-lg px-5 py-3" href="{% url 'Foundation:Action' %}" style="background-color: #254336; color: white; border-radius: 30px;">
+                <span>View All Programs</span>
+                <i class="fas fa-arrow-right ms-2"></i>
+            </a>
         </div>
     </div>
 </div>
-<!-- Counter End -->
 
-<!-- Testimonials Carousel Start -->
-<div class="container py-5">
-    <div class="text-center mx-auto pb-5" style="max-width: 800px;">
-        <h5 class="text-uppercase" style="color: rgba(37, 67, 54, 1);">Testimonials</h5>
-    </div>
-    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            {% for histoire in histoires %}
-            <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <div class="d-flex justify-content-center">
-                    <div class="card border-primary text-center" style="max-width: 700px;">
-                        <div class="card-body">
-                            <h5 class="card-title">Anonymous</h5>
-                            <p class="card-text">{{ histoire.stories }}</p>
+<!-- Donation Section -->
+<div class="container-fluid donation py-5" style="background-color: #f8f9fa;">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge rounded-pill mb-2 px-3 py-2" style="background-color: rgba(37, 67, 54, 0.1); color: #254336;">MAKE A DIFFERENCE</span>
+            <h2 class="display-5 fw-bold mb-4" style="color: #254336;">Your Support Can Save Lives</h2>
+            <div class="divider-custom mx-auto"></div>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Education Donation Card -->
+            <div class="col-lg-4">
+                <div class="card h-100 border-0 shadow rounded-4 overflow-hidden">
+                    <div class="position-relative">
+                        <img data-src="{% static 'img/donation-1.webp' %}"
+                             data-srcset="{% static 'img/donation-1.webp' %} 640w,
+                                         {% static 'img/donation-1.webp' %} 1024w,
+                                         {% static 'img/donation-1.webp' %} 1920w"
+                             sizes="(max-width: 992px) 100vw, 33vw"
+                             class="img-fluid w-100 lazyload" 
+                             alt="Education Donation">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                            <div class="bg-dark bg-opacity-50 p-4 rounded-circle">
+                                <h3 class="text-white m-0">Education</h3>
+                            </div>
                         </div>
                     </div>
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-3" style="color: #254336;">Help Underprivileged Children</h4>
+                        <p class="card-text mb-4">Our foundation is dedicated to providing educational opportunities and support to underprivileged children, empowering them to build a brighter future.</p>
+                        <a class="btn btn-lg w-100 py-3" href="{% url 'Paiement:donation' %}" style="background-color: #254336; color: white; border-radius: 30px;">
+                            <i class="fas fa-donate me-2"></i>Donate Now
+                        </a>
+                    </div>
                 </div>
             </div>
-            {% endfor %}
+            
+            <!-- Family Support Card -->
+            <div class="col-lg-4">
+                <div class="card h-100 border-0 shadow rounded-4 overflow-hidden">
+                    <div class="position-relative">
+                        <img data-src="{% static 'img/service-2.webp' %}"
+                             data-srcset="{% static 'img/service-2.webp' %} 640w,
+                                         {% static 'img/service-2.webp' %} 1024w,
+                                         {% static 'img/service-2.webp' %} 1920w"
+                             sizes="(max-width: 992px) 100vw, 33vw"
+                             class="img-fluid w-100 lazyload" 
+                             alt="Family Support">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                            <div class="bg-dark bg-opacity-50 p-4 rounded-circle">
+                                <h3 class="text-white m-0">Family</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-3" style="color: #254336;">Supporting Single Mothers</h4>
+                        <p class="card-text mb-4">We support single mothers by providing resources, education, and opportunities for them to thrive despite challenges.</p>
+                        <a class="btn btn-lg w-100 py-3" href="{% url 'Paiement:donation' %}" style="background-color: #254336; color: white; border-radius: 30px;">
+                            <i class="fas fa-donate me-2"></i>Donate Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Creativity Card -->
+            <div class="col-lg-4">
+                <div class="card h-100 border-0 shadow rounded-4 overflow-hidden">
+                    <div class="position-relative">
+                        <img data-src="{% static 'img/donation-3.webp' %}"
+                             data-srcset="{% static 'img/donation-3.webp' %} 640w,
+                                         {% static 'img/donation-3.webp' %} 1024w,
+                                         {% static 'img/donation-3.webp' %} 1920w"
+                             sizes="(max-width: 992px) 100vw, 33vw"
+                             class="img-fluid w-100 lazyload" 
+                             alt="Creativity Program">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                            <div class="bg-dark bg-opacity-50 p-4 rounded-circle">
+                                <h3 class="text-white m-0">Creativity</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-3" style="color: #254336;">Creativity & Social Reintegration</h4>
+                        <p class="card-text mb-4">We offer all young people a capital of experiences, assets and relationships to pursue by all means.</p>
+                        <a class="btn btn-lg w-100 py-3" href="{% url 'Paiement:donation' %}" style="background-color: #254336; color: white; border-radius: 30px;">
+                            <i class="fas fa-donate me-2"></i>Donate Now
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="d-flex justify-content-center mt-4">
-            <button class="testimonial-carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                <span class="testimonial-carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="testimonial-carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                <span class="testimonial-carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+        
+        <!-- CTA Banner -->
+        <div class="mt-5">
+            <div class="rounded-4 shadow p-5" style="background: linear-gradient(135deg, #254336, #1a2f25);">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <span class="badge rounded-pill px-3 py-2 mb-2" style="background-color: rgba(255, 255, 255, 0.2); color: white;">Support Our Mission</span>
+                        <h2 class="text-white display-6 mb-0">Join us in supporting the most vulnerable</h2>
+                    </div>
+                    <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                        <a href="{% url 'Paiement:donation' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill">
+                            <i class="fas fa-heart me-2"></i>Donate Now
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!-- Testimonials Carousel End -->
 
-<div class="row mb-3">
-    <div class="col-md-4 themed-grid-col">
-        <div class="text-center mx-auto pb-5" style="max-width: 800px;">
-            <h5 class="text-uppercase" style="color: rgba(37, 67, 54, 1);">Recent Campaign</h5>
-            <h1 class="mb-4">Campaigns you can fund</h1>
+<!-- Impact Stats -->
+<div class="container-fluid py-5" style="background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, 0.6)), url({% static 'img/volunteers-bg.webp' %}) center center; background-size: cover; background-attachment: fixed;">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold text-white mb-4">Our Impact</h2>
+            <div class="divider-custom mx-auto bg-white"></div>
+        </div>
+        
+        <div class="row g-4">
+            <!-- School Fees Stat -->
+            <div class="col-md-6 col-lg-3">
+                <div class="p-4 rounded-4 text-center h-100" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);">
+                    <div class="icon-box mb-4 mx-auto">
+                        <i class="fas fa-graduation-cap fa-3x text-white"></i>
+                    </div>
+                    <h3 class="text-white mb-3">School Fees Paid</h3>
+                    <div class="counter-box">
+                        <h2 class="counter-number text-white display-4 fw-bold mb-0">
+                            <span data-toggle="counter-up">500</span>+
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Funds Collected Stat -->
+            <div class="col-md-6 col-lg-3">
+                <div class="p-4 rounded-4 text-center h-100" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);">
+                    <div class="icon-box mb-4 mx-auto">
+                        <i class="fas fa-dollar-sign fa-3x text-white"></i>
+                    </div>
+                    <h3 class="text-white mb-3">Funds Collected</h3>
+                    <div class="counter-box">
+                        <h2 class="counter-number text-white display-4 fw-bold mb-0">
+                            <span data-toggle="counter-up">653</span>$
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Members Stat -->
+            <div class="col-md-6 col-lg-3">
+                <div class="p-4 rounded-4 text-center h-100" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);">
+                    <div class="icon-box mb-4 mx-auto">
+                        <i class="fas fa-users fa-3x text-white"></i>
+                    </div>
+                    <h3 class="text-white mb-3">Members</h3>
+                    <div class="counter-box">
+                        <h2 class="counter-number text-white display-4 fw-bold mb-0">
+                            <span data-toggle="counter-up">60</span>+
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Days of Help Stat -->
+            <div class="col-md-6 col-lg-3">
+                <div class="p-4 rounded-4 text-center h-100" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px);">
+                    <div class="icon-box mb-4 mx-auto">
+                        <i class="fas fa-hands-helping fa-3x text-white"></i>
+                    </div>
+                    <h3 class="text-white mb-3">Days of Help</h3>
+                    <div class="counter-box">
+                        <h2 class="counter-number text-white display-4 fw-bold mb-0">
+                            <span data-toggle="counter-up">487</span>+
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a class="btn btn-light btn-lg px-5 py-3 rounded-pill" href="{% url 'Foundation:adherer' %}">
+                <i class="fas fa-handshake me-2"></i>Join With Us
+            </a>
         </div>
     </div>
-    <div class="col-md-8 themed-grid-col">
-        <!-- Causes Carousel -->
+</div>
+
+<!-- Testimonials Section -->
+<div class="container-fluid py-5 bg-light">
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <span class="badge rounded-pill mb-2 px-3 py-2" style="background-color: rgba(37, 67, 54, 0.1); color: #254336;">VOICES</span>
+            <h2 class="display-5 fw-bold mb-4" style="color: #254336;">Testimonials</h2>
+            <div class="divider-custom mx-auto"></div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for histoire in histoires %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <div class="card border-0 shadow rounded-4">
+                                <div class="card-body p-5 text-center">
+                                    <i class="fas fa-quote-left fa-3x mb-4" style="color: rgba(37, 67, 54, 0.2);"></i>
+                                    <p class="fs-5 mb-4">{{ histoire.stories }}</p>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="testimonial-avatar">
+                                            <div class="avatar-placeholder rounded-circle" style="width: 60px; height: 60px; background-color: #254336; color: white; display: flex; align-items: center; justify-content: center;">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ms-3 text-start">
+                                            <h5 class="mb-1">Anonymous</h5>
+                                            <p class="text-muted mb-0">Beneficiary</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="d-flex justify-content-center mt-4 gap-2">
+                        <button class="btn rounded-circle" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" style="width: 40px; height: 40px; background-color: #254336; color: white;">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <button class="btn rounded-circle" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" style="width: 40px; height: 40px; background-color: #254336; color: white;">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Campaigns Section -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-5">
+                <span class="badge rounded-pill mb-2 px-3 py-2" style="background-color: rgba(37, 67, 54, 0.1); color: #254336;">PROJECTS</span>
+                <h2 class="display-5 fw-bold mb-4" style="color: #254336;">Recent Campaigns You Can Fund</h2>
+                <div class="divider-custom"></div>
+            </div>
+            <div class="col-lg-7">
+                <div class="d-flex justify-content-lg-end mt-4 mt-lg-0 gap-2">
+                    <button class="btn rounded-circle" type="button" data-bs-target="#causesCarousel" data-bs-slide="prev" style="width: 40px; height: 40px; background-color: #254336; color: white;">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button class="btn rounded-circle" type="button" data-bs-target="#causesCarousel" data-bs-slide="next" style="width: 40px; height: 40px; background-color: #254336; color: white;">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
         <div id="causesCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 {% for projet in projets %}
                 <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                    <div class="container-fluid causes">
-                        <div class="container py-5">
-                            <div class="row g-4">
-                                <div class="col-lg-12">
-                                    <div class="causes-item">
-                                        <div class="causes-img">
-                                            <img data-src="{{ projet.image.url }}" class="card-img-top img-fluid lazyload" style="height: 350px;" alt="Image">
-                                          
-                                            <div class="causes-link pb-2 px-3">
-                                                <small class="text-white"><i class="fas fa-chart-bar text-primary me-2"></i>Goal: ${{ projet.budget_souhaite }}</small>
-                                                <small class="text-white"><i class="fa fa-thumbs-up text-primary me-2"></i>Raised: ${{ projet.budget_actuelle }}</small>
-                                            </div>
-                                         
-                                        </div>
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
-                                                <span>65%</span>
-                                            </div>
-                                        </div>
-                                        <div class="causes-content p-4">
-                                            <h4 class="mb-3">{{ projet.nom }}</h4>
-                                            <p class="mb-4">{{ projet.description }}</p>
-                                            <a class="btn-hover-bg btn btn-primary text-white py-2 px-3" href="{% url 'Foundation:campagne' %}">See More</a>
-                                        </div>
-                                     
+                    <div class="card border-0 shadow rounded-4 overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img data-src="{{ projet.image.url }}"
+                                     class="img-fluid w-100 h-100 object-fit-cover lazyload" 
+                                     alt="{{ projet.nom }} Campaign Image">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body p-5">
+                                    <h3 class="card-title mb-4" style="color: #254336;">{{ projet.nom }}</h3>
+                                    <p class="card-text mb-4">{{ projet.description }}</p>
+                                    
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <span class="text-muted"><i class="fas fa-chart-bar me-2" style="color: #254336;"></i>Goal: ${{ projet.budget_souhaite }}</span>
+                                        <span class="text-muted"><i class="fa fa-thumbs-up me-2" style="color: #254336;"></i>Raised: ${{ projet.budget_actuelle }}</span>
+                                    </div>
+                                    
+                                    <div class="progress mb-4" style="height: 10px;">
+                                        <div class="progress-bar" role="progressbar" style="width: 65%; background-color: #254336;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                                        <a class="btn btn-lg px-4 me-md-2" href="{% url 'Foundation:campagne' %}" style="background-color: #254336; color: white;">View Details</a>
+                                        <a class="btn btn-outline-dark btn-lg px-4" href="{% url 'Paiement:donation' %}">Donate</a>
                                     </div>
                                 </div>
                             </div>
@@ -378,22 +474,9 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="position-relative">
-                <div class="d-flex justify-content-end">
-                    <button class="testimonial1-carousel-control-prev" type="button" data-bs-target="#causesCarousel" data-bs-slide="prev">
-                        <span class="testimonial1-carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="testimonial1-carousel-control-next" type="button" data-bs-target="#causesCarousel" data-bs-slide="next">
-                        <span class="testimonial1-carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
 </div>
-
 <!-- Partners Start -->
 <div class="container-fluid volunteer py-5">
     <div class="container py-5">
@@ -402,7 +485,13 @@
                 <div class="row g-4 ms-3">
                     <div class="col-lg-6">
                         <div class="volunteer-img">
-                            <img data-src="{% static '/img/team1.jpg' %}" class="img-fluid w-100 lazyload" alt="Image">
+                            <img data-src="{% static 'img/team1.webp' %}"
+                                 data-srcset="{% static 'img/team1.webp' %} 640w,
+                                             {% static 'img/team1.webp' %} 1024w"
+                                 sizes="(max-width: 768px) 50vw,
+                                       25vw"
+                                 class="img-fluid w-100 lazyload" 
+                                 alt="Blessed Communicator">
                             <div class="volunteer-title">
                                 <h5 class="mb-2 text-white">Blessed</h5>
                                 <p class="mb-0 text-white">Communicator</p>
@@ -411,7 +500,13 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="volunteer-img">
-                            <img data-src="{% static '/img/team3.jpg' %}" class="img-fluid w-100 lazyload" alt="Image">
+                            <img data-src="{% static 'img/team3.webp' %}"
+                                 data-srcset="{% static 'img/team3.webp' %} 640w,
+                                             {% static 'img/team3.webp' %} 1024w"
+                                 sizes="(max-width: 768px) 50vw,
+                                       25vw"
+                                 class="img-fluid w-100 lazyload" 
+                                 alt="Blessed Communicator">
                             <div class="volunteer-title">
                                 <h5 class="mb-2 text-white">Blessed</h5>
                                 <p class="mb-0 text-white">Communicator</p>
@@ -434,6 +529,5 @@
     </div>
 </div>
 <!-- Partners End -->
-
 
 {% endblock content %}

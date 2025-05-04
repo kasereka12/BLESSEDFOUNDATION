@@ -16,79 +16,182 @@
 <!-- Header End -->
 
 <!-- About Start -->
-<div class="container-fluid about py-5">
+<div class="container-fluid py-5 bg-light">
     <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-xl-5">
-                <div class="h-100">
-                    <img data-src="{% static 'img/blessed.jpg' %}" class="img-fluid w-100 h-100 lazyload" alt="Image">
+        <!-- Founder's Story Section -->
+        <div class="row mb-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="position-relative overflow-hidden rounded shadow-sm">
+                    <img data-src="{% static 'img/blessed.webp' %}"
+                         data-srcset="{% static 'img/blessed.webp' %} 640w,
+                                     {% static 'img/blessed.webp' %} 1024w,
+                                     {% static 'img/blessed.webp' %} 1920w"
+                         sizes="100vw"
+                         class="img-fluid w-100 lazyload" 
+                         alt="Blessed Foundation Hero Image">
+                    <div class="position-absolute bottom-0 start-0 w-100 py-3 px-4" style="background: rgba(37, 67, 54, 0.75);">
+                        <h4 class="text-white mb-0">Our Beginning</h4>
+                    </div>
                 </div>
             </div>
+            <div class="col-lg-6">
+                <h2 class="display-6 mb-4" style="color: #254336;">The Genesis of Our Mission</h2>
+                <div class="border-start border-4 border-success ps-4 mb-4">
+                    <p class="fst-italic">"From personal struggle comes the strongest determination to create change."</p>
+                </div>
+                <p class="fs-5">
+                    According to <span class="fw-bold" style="color: #254336;">Benite Mukombo</span>, our foundation's story begins with his own childhood experiences in Lubumbashi. Growing up in a modest home with his parents and three siblings, his family often struggled with basic necessities, sometimes going to bed hungry due to financial hardships.
+                </p>
+                <p class="fs-5">
+                    At just 9 years old, Benite and his siblings were selling garden vegetables roadside to help their family survive - while other children enjoyed their childhood, they were occupied with helping their parents make ends meet.
+                </p>
+                <p class="fs-5">
+                    These early experiences instilled in Benite a deep empathy for families facing poverty and hardship, particularly understanding the trauma parents experience when unable to provide for their children.
+                </p>
+            </div>
+        </div>
 
-            <div class="col-xl-7">
-                <div class="tab-class p-4">
-                    <ul class="nav d-flex mb-2 p-3" style="background: rgba(37, 67, 54, 0.5);">
-                        <li class="nav-item mb-3">
-                            <a class="d-flex py-2 text-center bg-white active" data-bs-toggle="pill" href="#tab-1">
-                                <span class="text-dark" style="width: 150px;">Genese</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mb-3">
-                            <a class="d-flex py-2 mx-3 text-center bg-white" data-bs-toggle="pill" href="#tab-2">
-                                <span class="text-dark" style="width: 150px;">Mission</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div id="tab-1" class="tab-pane fade show p-0 active">
-                            <div class="row">
-                                <div class="col-md-6 themed-grid-col">
-                                    <p class="fs-5">
-                                        According to <span style="color: red;">Benite Mukombo</span> based on his own tragic experience, he grew up in Lubumbashi, a small town in Africa, where he lived in a modest house with his parents and three siblings. They often lacked basic necessities and sometimes went to bed hungry due to financial struggles.
-                                    </p>
-                                    <p class="fs-5">
-                                        At the tender age of 9, his parents sent him and his siblings to sell vegetables they grew in their garden on the roadside to earn money for food, unable to afford new clothes like other children.
-                                    </p>
+        <!-- Our Mission & Vision Tabs -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <ul class="nav nav-pills mb-4 justify-content-center" id="mission-tabs" role="tablist">
+                    <li class="nav-item mx-2" role="presentation">
+                        <button class="nav-link active px-4 py-3" id="mission-tab" data-bs-toggle="pill" data-bs-target="#mission" type="button" role="tab" aria-controls="mission" aria-selected="true" style="background-color: #254336; color: white;">Our Mission</button>
+                    </li>
+                    <li class="nav-item mx-2" role="presentation">
+                        <button class="nav-link px-4 py-3" id="goals-tab" data-bs-toggle="pill" data-bs-target="#goals" type="button" role="tab" aria-controls="goals" aria-selected="false" style="background-color: #254336; color: white;">Our Goals</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content p-4 bg-white rounded shadow-sm" id="mission-tabContent">
+                    <!-- Mission Tab -->
+                    <div class="tab-pane fade show active" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="d-flex mb-4">
+                                    <div class="flex-shrink-0 me-3">
+                                        <i class="fas fa-heart fa-2x" style="color: #254336;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-2">Support for Vulnerable Families</h5>
+                                        <p>We help families struck by poverty who have lost all hope, providing resources and support to rebuild their lives.</p>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 themed-grid-col">
-                                    <p class="fs-5">
-                                        Recalling those challenging times, Benite mentioned how witnessing his parents' hardships and the fear it caused left him feeling hopeless from a young age. While other children played and enjoyed their childhood, they were occupied with helping their parents survive.
-                                    </p>
-                                    <p class="fs-5 mb-4">
-                                        Reflecting on his past, Benite empathized with the difficulty parents face when they cannot provide for their children, describing it as potentially traumatic.
-                                    </p>
-                                </div>
-                                <div class="col-md-6 themed-grid-col">
-                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> help families struck by poverty and who have lost all hope.</p>
-                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> to assist underprivileged children, single mothers, and anyone who has lost all hope due to the challenges of daily life</p>
-                                </div>
-                                <div class="col-md-6 themed-grid-col">
-                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> facilitate access to local support programs to aid those in need</p>
-                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> help you find the light again.</p>
+                                
+                                <div class="d-flex mb-4">
+                                    <div class="flex-shrink-0 me-3">
+                                        <i class="fas fa-child fa-2x" style="color: #254336;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-2">Children & Single Mothers</h5>
+                                        <p>Our programs assist underprivileged children, single mothers, and anyone who has lost hope due to life's challenges.</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div id="tab-2" class="tab-pane fade show p-0">
-                            <div class="row">
-                                <div class="col-md-6 themed-grid-col">
-                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Reintegration of orphans and underprivileged children.</p>
-                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> To give hope (smile) to abandoned women who single-handedly assume parental responsibilities worldwide, especially in the DRC, through guidance and integration into various professional and life domains</p>
+                            
+                            <div class="col-md-6">
+                                <div class="d-flex mb-4">
+                                    <div class="flex-shrink-0 me-3">
+                                        <i class="fas fa-hands-helping fa-2x" style="color: #254336;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-2">Local Support Access</h5>
+                                        <p>We facilitate access to local support programs to ensure comprehensive assistance for those in need.</p>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 themed-grid-col">
-                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Encourage creativity and social reintegration to establish greater equality of opportunities by offering all young people a wealth of experiences, assets, and relationships to pursue through all means and notably</p>
-                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Establishment of orphanages and centers for mixed children and youth.</p>
-                                </div>
-                                <div class="col-md-6 themed-grid-col">
-                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Encourage creativity and social reintegration to establish greater equality of opportunities by offering all young people a wealth of experiences, assets, and relationships to pursue through all means and notably</p>
-                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Establishment of orphanages and centers for mixed children and youth.</p>
-                                </div>
-                                <div class="col-md-6 themed-grid-col">
-                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Promote and encourage young girls through education, awareness, and professionalism for a complete success in life.</p>
-                                    <p class="text-dark"><i class="fa fa-check me-2" style="color: green;"></i> Creation of schools and training centers for education and guidance.</p>
+                                
+                                <div class="d-flex mb-4">
+                                    <div class="flex-shrink-0 me-3">
+                                        <i class="fas fa-lightbulb fa-2x" style="color: #254336;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-2">Restoring Hope</h5>
+                                        <p>Our ultimate goal is to help you find the light again, no matter how challenging your circumstances.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Goals Tab -->
+                    <div class="tab-pane fade" id="goals" role="tabpanel" aria-labelledby="goals-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="d-flex mb-4">
+                                    <div class="flex-shrink-0 me-3">
+                                        <i class="fas fa-home fa-2x" style="color: #254336;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-2">Orphan Reintegration</h5>
+                                        <p>We work to reintegrate orphans and underprivileged children into supportive environments.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex mb-4">
+                                    <div class="flex-shrink-0 me-3">
+                                        <i class="fas fa-female fa-2x" style="color: #254336;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-2">Support for Single Mothers</h5>
+                                        <p>We provide hope to abandoned women who single-handedly assume parental responsibilities, especially in the DRC.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex mb-4">
+                                    <div class="flex-shrink-0 me-3">
+                                        <i class="fas fa-building fa-2x" style="color: #254336;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-2">Orphanage Establishment</h5>
+                                        <p>We create centers for mixed children and youth to provide safe, nurturing environments.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="d-flex mb-4">
+                                    <div class="flex-shrink-0 me-3">
+                                        <i class="fas fa-palette fa-2x" style="color: #254336;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-2">Creativity & Social Reintegration</h5>
+                                        <p>We encourage creative expression while establishing greater equality of opportunities for all young people.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex mb-4">
+                                    <div class="flex-shrink-0 me-3">
+                                        <i class="fas fa-graduation-cap fa-2x" style="color: #254336;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-2">Educational Initiatives</h5>
+                                        <p>We create schools and training centers focused on education and guidance for vulnerable populations.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex mb-4">
+                                    <div class="flex-shrink-0 me-3">
+                                        <i class="fas fa-venus fa-2x" style="color: #254336;"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-2">Women's Empowerment</h5>
+                                        <p>We promote and encourage young girls through education, awareness, and professional development.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <div class="p-5 rounded" style="background-color: rgba(37, 67, 54, 0.1);">
+                    <h3 class="mb-4">Join Our Mission to Make a Difference</h3>
+                    <p class="mb-4 fs-5">Together, we can bring hope and create lasting change in the lives of those who need it most.</p>
+                    <a href="#" class="btn btn-lg px-5 py-3" style="background-color: #254336; color: white;">Get Involved</a>
                 </div>
             </div>
         </div>
